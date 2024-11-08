@@ -1,11 +1,12 @@
-import {Button} from "@/components/ui/button";
-import {Camera} from "lucide-react";
+import {Categories, Container} from "@/components/shared";
+import {Title} from "@/components/shared/title";
+import {cn} from "@/lib/utils";
 
 export default function Home() {
-    return (
-        <div>
-            <Button variant={"outline"}>Basket</Button>
-            <Camera color="red" size={48}/>gi
-        </div>
-    );
+    return <>
+        <Container className={'flex flex-col mt-10 px-12'}>
+            <Title text='all pizzas' size={'lg'} className={'font-extrabold'}/>
+            <Categories />
+        </Container>
+    </>
 }
