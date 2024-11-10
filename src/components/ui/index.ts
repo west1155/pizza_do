@@ -8,3 +8,4 @@ export {Drawer} from "@/components/ui/drawer";
 export {Popover} from "@/components/ui/popover";
 export {Skeleton} from "@/components/ui/skeleton";
 export {Slider} from "@/components/ui/slider";
+export {RangeSlider} from "@/components/ui/range-slider";
