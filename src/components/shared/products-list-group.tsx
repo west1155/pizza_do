@@ -1,7 +1,10 @@
-import React from 'react';
+'use client';
+
+import React, {useEffect} from 'react';
 import {Title} from "./title";
 import {cn} from "../../lib/utils";
 import {ProductCard} from "./product-card";
+import { useIntersection } from 'react-use';
 
 
 
@@ -17,9 +20,19 @@ type PropsType = {
 
 
 const ProductsListGroup: React.FC<PropsType> = ({className, title, products, listClassName, categoryId}) => {
+    const intersectionRef = React.useRef(null);
+    const intersection = useIntersection(intersectionRef, {
+        threshold: 0.4,
+    });
+    useEffect(() => {
+        if (intersection && intersection.isIntersecting) {
+            console.log(title, categoryId);
+        }
+    }, [categoryId, intersection, intersection?.isIntersecting, title]);
+
     return (
-        <div className={className}>
-            <Title text={title} size={'lg'} className={'font-extrabold mb-5'}/>
+        <div className={className} ref={intersectionRef}>
+            <Title text={title} className={className} />
             <div className={cn('grid grid-cols-3 gap-[50px]', listClassName)}>
                 {products
                     .filter((product) => product.items.length > 0)

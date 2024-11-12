@@ -12,7 +12,7 @@ export default function Home() {
         <TopBar className={'px-12'}/>
 
         <Container className={'pb-14 px-12'}>
-            <div className={'flex gap-[60px]'}>
+            <div className={'flex gap-[80px]'}>
                 <div className={'w-[250px]'}>
                     <Filters/>
                 </div>
@@ -38,9 +38,68 @@ export default function Home() {
                                     items: [{price: 5}],
                                     ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
                                 },
+                                {
+                                    id: 4,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                                {
+                                    id: 5,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                                {
+                                    id: 6,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
                             ]
                         }
                                            categoryId={1}/>
+                        <ProductsListGroup title={'Pizzas222'} products={
+                            [
+                                {
+                                    id: 1,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                                {
+                                    id: 2,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                                {
+                                    id: 3,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                                {
+                                    id: 4,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                                {
+                                    id: 5,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                                {
+                                    id: 6,
+                                    name: 'pizza num',
+                                    items: [{price: 5}],
+                                    ImageURL: '/11EE7D612FC7B7FCA5BE822752BEE1E5.avif'
+                                },
+                            ]
+                        }
+                                           categoryId={2}/>
                     </div>
                 </div>
             </div>
