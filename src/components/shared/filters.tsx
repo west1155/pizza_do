@@ -1,18 +1,41 @@
 'use client';
 
-import {Title} from "@/components/shared/title";
-import {FilterCheckbox} from "@/components/shared/filter-checkbox";
-import {Input, RangeSlider} from "@/components/ui";
 import {useSearchParams} from "next/navigation";
 import { useMap} from 'react-use';
+import {CheckboxFilterGroup} from "./checkbox-filter-group";
+import {FilterCheckbox} from "./filter-checkbox";
+import {Title} from "./title";
+import {Input, RangeSlider} from "../ui";
 
 type PropType = {
     className?: string
 }
 
+
+
 export const Filters: React.FC<PropType> = ({className}) => {
     const searchParams = useSearchParams()
     const [filters, { set }] = useMap(Object.fromEntries(searchParams.entries()));
+    const items = [
+        {text: 'Mushrooms', value: 'mushrooms'},
+        {text: 'Tomato', value: 'tomato'},
+        {text: 'Cheese', value: 'cheese'},
+        {text: 'Olives', value: 'olives'},
+        {text: 'Bacon', value: 'bacon'},
+        {text: 'Pepperoni', value: 'pepperoni'},
+        {text: 'Paprika', value: 'paprika'},
+        {text: 'Corn', value: 'corn'},
+        {text: 'Onion', value: 'onion'},
+        {text: 'Chicken', value: 'chicken'},
+        {text: 'Beef', value: 'beef'},
+        {text: 'Pork', value: 'pork'},
+        {text: 'Salami', value: 'salami'},
+        {text: 'Shrimp', value: 'shrimp'},
+        {text: 'Mussels', value: 'mussels'},
+        {text: 'Tuna', value: 'tuna'},
+        {text: 'Crab', value: 'crab'},
+
+    ];
     return (
         <div className={className}>
             <Title text={'filtration'} size={'sm'} className={'mb-5 font-bold'}/>
@@ -37,6 +60,13 @@ export const Filters: React.FC<PropType> = ({className}) => {
                     }}
                 />
             </div>
+
+            <CheckboxFilterGroup
+                className={'mt-5'}
+                title={'Ingridients'}
+                items={items}
+                defaultItems={items}
+            />
         </div>
     );
 }
