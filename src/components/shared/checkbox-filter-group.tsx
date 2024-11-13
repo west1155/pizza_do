@@ -28,7 +28,8 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
     const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
     }
-    return (<div className={className}>
+    return (
+        <div className={className}>
             <p className={'font-bold mb-3'}>{title}</p>
             {showAll && (
                 <div className={'mb-5'}>
