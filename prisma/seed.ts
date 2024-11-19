@@ -29,8 +29,8 @@ async function down() {
 
 async function main() {
     try {
-        await up()
         await down()
+        await up()
     } catch (e) {
         console.error(e)
     }
