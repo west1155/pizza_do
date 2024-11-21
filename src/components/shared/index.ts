@@ -1,3 +1,4 @@
+export {SearchBar} from './searchBar';
 export {Header} from './header';
 export {Container} from './container';
 export {Categories} from './categories';

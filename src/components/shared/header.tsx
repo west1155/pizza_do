@@ -4,6 +4,7 @@ import Image from "next/image";
 import {ArrowRight, ShoppingCart, User} from "lucide-react";
 import {Container} from "./container";
 import {Button} from "../ui";
+import {SearchBar} from "./searchBar";
 
 
 type PropsType = {
@@ -20,6 +21,9 @@ export const Header: React.FC<PropsType> = ({className}) => {
                     <div>
                         <h1 className={'text-2xl uppercase font-black'}>Pizza Do</h1>
                         <p className={'text-sm text-gray-400 leading-3'}>Order your favourite pizza</p>
+                    </div>
+                    <div className={'mx-10 flex-1'}>
+                       <SearchBar/>
                     </div>
                 </div>
                 <div className={'flex items-center gap-3'}>
