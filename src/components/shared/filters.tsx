@@ -6,6 +6,7 @@ import {CheckboxFilterGroup} from "./checkbox-filter-group";
 import {FilterCheckbox} from "./filter-checkbox";
 import {Title} from "./title";
 import {Input, RangeSlider} from "../ui";
+import React from "react";
 
 type PropType = {
     className?: string
@@ -38,7 +39,7 @@ export const Filters: React.FC<PropType> = ({className}) => {
     ];
     return (
         <div className={className}>
-            <Title text={'filtration'} size={'sm'} className={'mb-5 font-bold'}/>
+            <Title text={'Filters'} size={'sm'} className={'mb-5 font-bold'}/>
             <div className={'flex flex-col gap-4'}>
                 <FilterCheckbox text={'can pick up'} value={'1'}/>
                 <FilterCheckbox text={'new pizzas'} value={'2'}/>
@@ -54,7 +55,7 @@ export const Filters: React.FC<PropType> = ({className}) => {
                     max={1000}
                     step={10}
                     value={[Number(filters.priceFrom) || 0, Number(filters.priceTo) || 1000]}
-                    onValueChange={([priceFrom, priceTo]) => {
+                    onValueChange={([priceFrom, priceTo]: [number, number]) => {
                         set('priceFrom', String(priceFrom || 0));
                         set('priceTo', String(priceTo || 0));
                     }}
