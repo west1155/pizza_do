@@ -6,7 +6,7 @@ import {cn} from "../../lib/utils";
 import {Product} from "@prisma/client";
 import {useClickAway} from "react-use";
 import Link from "next/link";
-import {ApiClient} from "../../app/api/api-client";
+import {ApiClient} from "../../services/api-client";
 
 
 type PropsType = {
@@ -24,12 +24,6 @@ export const SearchBar: React.FC<PropsType> = ({className}) => {
     useClickAway(ref, () => {
         setFocused(false);
     });
-
-    useEffect(() => {
-        ApiClient.products.search(searchQuery).then((data) => {
-            setProducts(data);
-        }
-    }, [searchQuery]);
 
     const onClickItem = () => {
         setProducts([]);
