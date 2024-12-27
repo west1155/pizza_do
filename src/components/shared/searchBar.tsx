@@ -1,12 +1,11 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Search} from "lucide-react";
 import {cn} from "../../lib/utils";
 import {Product} from "@prisma/client";
 import {useClickAway} from "react-use";
 import Link from "next/link";
-import {ApiClient} from "../../services/api-client";
 
 
 type PropsType = {

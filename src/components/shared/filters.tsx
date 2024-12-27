@@ -7,6 +7,7 @@ import {FilterCheckbox} from "./filter-checkbox";
 import {Title} from "./title";
 import {Input, RangeSlider} from "../ui";
 import React from "react";
+import {useFilterIngridients} from "../../app/hooks/useFilterIngridients";
 
 type PropType = {
     className?: string
@@ -17,26 +18,11 @@ type PropType = {
 export const Filters: React.FC<PropType> = ({className}) => {
     const searchParams = useSearchParams()
     const [filters, { set }] = useMap(Object.fromEntries(searchParams.entries()));
-    const items = [
-        {text: 'Mushrooms', value: 'mushrooms'},
-        {text: 'Tomato', value: 'tomato'},
-        {text: 'Cheese', value: 'cheese'},
-        {text: 'Olives', value: 'olives'},
-        {text: 'Bacon', value: 'bacon'},
-        {text: 'Pepperoni', value: 'pepperoni'},
-        {text: 'Paprika', value: 'paprika'},
-        {text: 'Corn', value: 'corn'},
-        {text: 'Onion', value: 'onion'},
-        {text: 'Chicken', value: 'chicken'},
-        {text: 'Beef', value: 'beef'},
-        {text: 'Pork', value: 'pork'},
-        {text: 'Salami', value: 'salami'},
-        {text: 'Shrimp', value: 'shrimp'},
-        {text: 'Mussels', value: 'mussels'},
-        {text: 'Tuna', value: 'tuna'},
-        {text: 'Crab', value: 'crab'},
-
-    ];
+    const ingredients = useFilterIngridients();
+    const items = ingredients.map((ingredient) => ({
+        text: ingredient.name,
+        value: String(ingredient.id),
+    }));
     return (
         <div className={className}>
             <Title text={'Filters'} size={'sm'} className={'mb-5 font-bold'}/>
@@ -66,7 +52,7 @@ export const Filters: React.FC<PropType> = ({className}) => {
                 className={'mt-5'}
                 title={'Ingridients'}
                 items={items}
-                defaultItems={items}
+                defaultItems={items.slice(0, 6)}
             />
         </div>
     );

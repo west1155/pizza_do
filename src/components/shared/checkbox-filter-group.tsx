@@ -9,6 +9,7 @@ type PropsType = {
     items: FilterChecboxProps[];
     defaultItems?: FilterChecboxProps[];
     limit?: number;
+    loading?: boolean;
     onChange?: (values: string[]) => void;
 }
 
@@ -18,6 +19,8 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
                                                              title,
                                                              items,
                                                              limit = 5,
+                                                             loading = false,
+
 
                                                          }) => {
     const [showAll, setShowAll] = React.useState(false);
@@ -27,6 +30,15 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
             item.text.toLowerCase().includes(search.toLowerCase())) : items.slice(0, limit);
     const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
+    }
+
+    if (loading) {
+        return (
+            <div className={className}>
+                <p className={"font-bold mb-3"}>{title}</p>
+            </div>
+        )
+
     }
     return (
         <div className={className}>

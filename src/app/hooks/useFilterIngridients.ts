@@ -3,13 +3,12 @@ import { Ingredient } from "@prisma/client";
 import React from "react";
 import { apiClient } from "@/services/api-client";
 
-type ReturnProps = Pick<Ingredient, "id" | "name" | "price">[];
-
+type ReturnProps = Pick<Ingredient, "id" | "name">[];
 export const useFilterIngridients = (): ReturnProps => {
-    const [items, setItems] = React.useState<ReturnProps>([]);
+    const [ingredients, setItems] = React.useState<ReturnProps>([]);
 
     React.useEffect(() => {
-        apiClient.ingridients.getAll()
+        apiClient.ingredients.getAll()
             .then((data) => {
                 setItems(data);
             })
@@ -18,5 +17,6 @@ export const useFilterIngridients = (): ReturnProps => {
             });
     }, []);
 
-    return items;
+    console.log(ingredients)
+    return ingredients;
 };
