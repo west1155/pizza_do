@@ -13,8 +13,8 @@ const generateProductItem = ({
                                  size,
                              }: {
     productId: number;
-    pizzaType?: 1 | 2;
-    size?: 20 | 30 | 40;
+    pizzaType?: string | undefined;
+    size?: string | undefined;
 }) => {
     return {
         productId,
@@ -29,14 +29,14 @@ async function up() {
         data: [
             {
                 fullName: 'User Test',
-                email: 'user@test.ru',
+                email: 'user@test.test',
                 password: hashSync('111111', 10),
                 verified: new Date(),
                 role: 'USER',
             },
             {
                 fullName: 'Admin Admin',
-                email: 'admin@test.ru',
+                email: 'admin@test.test',
                 password: hashSync('111111', 10),
                 verified: new Date(),
                 role: 'ADMIN',
@@ -95,22 +95,22 @@ async function up() {
     await prisma.productItem.createMany({
         data: [
             // Pizza "Peperoni fresh"
-            generateProductItem({ productId: pizza1.id, pizzaType: 1, size: 20 }),
-            generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 30 }),
-            generateProductItem({ productId: pizza1.id, pizzaType: 2, size: 40 }),
+            generateProductItem({ productId: pizza1.id, pizzaType: '1', size: '20' }),
+            generateProductItem({ productId: pizza1.id, pizzaType: '2', size: '30' }),
+            generateProductItem({ productId: pizza1.id, pizzaType: '2', size: '40' }),
 
             // Pizza "Cheesee"
-            generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 20 }),
-            generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 30 }),
-            generateProductItem({ productId: pizza2.id, pizzaType: 1, size: 40 }),
-            generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 20 }),
-            generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 30 }),
-            generateProductItem({ productId: pizza2.id, pizzaType: 2, size: 40 }),
+            generateProductItem({ productId: pizza2.id, pizzaType: '1', size: '20' }),
+            generateProductItem({ productId: pizza2.id, pizzaType: '1', size: '30' }),
+            generateProductItem({ productId: pizza2.id, pizzaType: '1', size: '40' }),
+            generateProductItem({ productId: pizza2.id, pizzaType: '2', size: '20' }),
+            generateProductItem({ productId: pizza2.id, pizzaType: '2', size: '30' }),
+            generateProductItem({ productId: pizza2.id, pizzaType: '2', size: '40' }),
 
             // Pizza "Chorizo fresh"
-            generateProductItem({ productId: pizza3.id, pizzaType: 1, size: 20 }),
-            generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 30 }),
-            generateProductItem({ productId: pizza3.id, pizzaType: 2, size: 40 }),
+            generateProductItem({ productId: pizza3.id, pizzaType: '1', size: '20' }),
+            generateProductItem({ productId: pizza3.id, pizzaType: '2', size: '30' }),
+            generateProductItem({ productId: pizza3.id, pizzaType: '2', size: '40' }),
 
             // Rest of the products
             generateProductItem({ productId: 1 }),
