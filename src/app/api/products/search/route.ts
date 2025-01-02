@@ -11,7 +11,7 @@ export async function GET(req: NextRequest) {
                 contains: query,
                 mode: 'insensitive'
             }
-        }
+        },
     })
 
     return NextResponse.json(products)

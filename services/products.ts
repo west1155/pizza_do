@@ -1,4 +1,4 @@
-import {axiosInstance} from "@/services/instance";
+import {axiosInstance} from "./instance";
 import {Product} from "@prisma/client";
 
 export const search = async (query: string) => {

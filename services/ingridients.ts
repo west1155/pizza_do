@@ -1,4 +1,4 @@
-import {axiosInstance} from "@/services/instance";
+import {axiosInstance} from "./instance";
 import {Ingredient} from "@prisma/client";
 
 export const getAll = async () => {
