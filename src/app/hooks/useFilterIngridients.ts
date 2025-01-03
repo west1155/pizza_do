@@ -2,21 +2,35 @@
 import { Ingredient } from "@prisma/client";
 import React from "react";
 import { apiClient } from "../../../services/api-client";
+import { useSet } from "react-use";
 
-type ReturnProps = Pick<Ingredient, "id" | "name">[];
-export const useFilterIngridients = (): ReturnProps => {
-    const [ingredients, setItems] = React.useState<ReturnProps>([]);
+type ReturnProps = {
+    ingredients: Pick<Ingredient, "id" | "name">[];
+    selectedIds: Set<string>;
+    addId: (id: string) => void;
+};
+
+export const useFilterIngredients = (): ReturnProps => {
+    const [ingredients, setIngredients] = React.useState<Pick<Ingredient, "id" | "name">[]>([]);
+    const [selectedIds, { toggle }] = useSet(new Set<string>());
 
     React.useEffect(() => {
         apiClient.ingredients.getAll()
-            .then((data) => {
-                setItems(data);
+            .then((data: Pick<Ingredient, "id" | "name">[]) => {
+                setIngredients(data);
             })
             .catch((error) => {
                 console.error(error);
             });
     }, []);
 
-    console.log(ingredients)
-    return ingredients;
+    const addId = (id: string) => {
+        toggle(id);
+    };
+
+    return {
+        ingredients,
+        selectedIds,
+        addId,
+    };
 };

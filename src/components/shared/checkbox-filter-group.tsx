@@ -10,7 +10,9 @@ type PropsType = {
     defaultItems?: FilterChecboxProps[];
     limit?: number;
     loading?: boolean;
-    onChange?: (values: string[]) => void;
+    onClickCheckbox?: (id: string) => void;
+    selectedIds?: Set<string>;
+
 }
 
 
@@ -20,6 +22,8 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
                                                              items,
                                                              limit = 5,
                                                              loading = false,
+                                                            onClickCheckbox,
+                                                            selectedIds
 
 
                                                          }) => {
@@ -57,11 +61,9 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
                         text={item.text}
                         value={item.value}
                         endAdornment={item.endAdornment}
-                        checked={false}
-                        onCheckedChange={(checked) => {
-                            console.log(checked)
-                        }}
-
+                        checked={selectedIds?.has(item.value)}
+                        onCheckedChange={() => {onClickCheckbox?.(item.value)}
+                        }
                     />
                 ))}
             </div>

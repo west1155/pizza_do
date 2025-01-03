@@ -7,7 +7,8 @@ import {FilterCheckbox} from "./filter-checkbox";
 import {Title} from "./title";
 import {Input, RangeSlider} from "../ui";
 import React from "react";
-import {useFilterIngridients} from "../../app/hooks/useFilterIngridients";
+import {useFilterIngredients} from "../../app/hooks/useFilterIngridients";
+import {Ingredient} from "@prisma/client";
 
 type PropType = {
     className?: string
@@ -18,8 +19,8 @@ type PropType = {
 export const Filters: React.FC<PropType> = ({className}) => {
     const searchParams = useSearchParams()
     const [filters, { set }] = useMap(Object.fromEntries(searchParams.entries()));
-    const ingredients = useFilterIngridients();
-    const items = ingredients.map((ingredient) => ({
+    const {ingredients, addId, selectedIds} = useFilterIngredients();
+    const items = ingredients.map((ingredient: Pick<Ingredient, "name" | "id">) => ({
         text: ingredient.name,
         value: String(ingredient.id),
     }));
@@ -53,6 +54,10 @@ export const Filters: React.FC<PropType> = ({className}) => {
                 title={'Ingridients'}
                 items={items}
                 defaultItems={items.slice(0, 6)}
+                onClickCheckbox={(id) => {
+                    addId(id);
+                }}
+                selectedIds={selectedIds}
             />
         </div>
     );
