@@ -1,37 +1,36 @@
 import React, {ChangeEvent} from 'react';
-import {FilterChecboxProps, FilterCheckbox} from "./filter-checkbox";
+import {FilterCheckboxProps, FilterCheckbox} from "./filter-checkbox";
 import {Input} from "../ui";
-
 
 type PropsType = {
     className?: string;
     title: string;
-    items: FilterChecboxProps[];
-    defaultItems?: FilterChecboxProps[];
+    items: FilterCheckboxProps[];
+    defaultItems?: FilterCheckboxProps[];
     limit?: number;
     loading?: boolean;
     onClickCheckbox?: (id: string) => void;
     selectedIds?: Set<string>;
-
+    name?: string;
 }
-
 
 export const CheckboxFilterGroup: React.FC<PropsType> = ({
                                                              className,
                                                              title,
                                                              items,
+                                                             defaultItems,
                                                              limit = 5,
+                                                             name,
                                                              loading = false,
-                                                            onClickCheckbox,
-                                                            selectedIds
-
-
+                                                             onClickCheckbox,
+                                                             selectedIds
                                                          }) => {
     const [showAll, setShowAll] = React.useState(false);
     const [search, setSearch] = React.useState('');
     const list = showAll ?
         items.filter((item) =>
-            item.text.toLowerCase().includes(search.toLowerCase())) : items.slice(0, limit);
+            item.text.toLowerCase().includes(search.toLowerCase())) :
+        (defaultItems || items).slice(0, limit);
     const onChangeSearch = (e: ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value)
     }
@@ -42,7 +41,6 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
                 <p className={"font-bold mb-3"}>{title}</p>
             </div>
         )
-
     }
     return (
         <div className={className}>
@@ -55,13 +53,14 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
                         placeholder={'Search ...'}/>
                 </div>)}
             <div className={'flex flex-col gap-4 max-h-96 pr-2 overflow-auto scrollbar'}>
-                {list.map((item, index) => (
+                {list.map((item: FilterCheckboxProps, index: number) => (
                     <FilterCheckbox
                         key={index}
                         text={item.text}
                         value={item.value}
                         endAdornment={item.endAdornment}
                         checked={selectedIds?.has(item.value)}
+                        name={name}
                         onCheckedChange={() => {onClickCheckbox?.(item.value)}
                         }
                     />
@@ -75,7 +74,6 @@ export const CheckboxFilterGroup: React.FC<PropsType> = ({
                         {showAll ? 'Show less' : 'Show all'}
                     </button>
                 </div>)}
-
         </div>
     );
 }

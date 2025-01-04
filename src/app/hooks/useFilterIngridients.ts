@@ -8,10 +8,19 @@ type ReturnProps = {
     ingredients: Pick<Ingredient, "id" | "name">[];
     selectedIds: Set<string>;
     addId: (id: string) => void;
+    price: PriceProps;
+    setPrice: React.Dispatch<React.SetStateAction<PriceProps>>;
 };
+
+
+export type PriceProps = {
+    priceFrom: number;
+    priceTo: number;
+}
 
 export const useFilterIngredients = (): ReturnProps => {
     const [ingredients, setIngredients] = React.useState<Pick<Ingredient, "id" | "name">[]>([]);
+    const [price, setPrice] = React.useState<PriceProps>({priceFrom: 0, priceTo: 150});
     const [selectedIds, { toggle }] = useSet(new Set<string>());
 
     React.useEffect(() => {
@@ -32,5 +41,6 @@ export const useFilterIngredients = (): ReturnProps => {
         ingredients,
         selectedIds,
         addId,
+        price, setPrice
     };
 };
