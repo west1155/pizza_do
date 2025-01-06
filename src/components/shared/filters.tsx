@@ -107,9 +107,9 @@ export const Filters: React.FC<Props> = ({ className }) => {
                         type="number"
                         min={1}
                         max={150}
-                        placeholder="30000"
+                        placeholder="150"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => set('priceTo', e.target.value)}
-                        value={String(filters.priceTo || 0)}
+                        value={String(filters.priceTo || 150)}
                     />
                 </div>
                 <RangeSlider

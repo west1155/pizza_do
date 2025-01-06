@@ -17,9 +17,6 @@ type PropsType = {
     categoryId: number;
 }
 
-
-
-
 const ProductsListGroup: React.FC<PropsType> = ({className, title, products, listClassName, categoryId}) => {
     const intersectionRef = React.useRef(null);
     const intersection = useIntersection(intersectionRef, {
@@ -45,7 +42,7 @@ const ProductsListGroup: React.FC<PropsType> = ({className, title, products, lis
                         id={product.id}
                         name={product.name}
                         price={product.items[0].price}
-                        imgURL={product.ImageURL}
+                        imgURL={product.imageUrl}
                     />))}
             </div>
 

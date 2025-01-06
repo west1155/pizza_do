@@ -5,3 +5,4 @@ export {Categories} from './categories';
 export {CheckboxFilterGroup} from './checkbox-filter-group';
 export {FilterCheckbox} from './filter-checkbox';
 export {Title} from './title';
+export {ProductImage} from './product-image';
