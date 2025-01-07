@@ -15,7 +15,7 @@ type PropsType = {
 export const ProductCard: React.FC<PropsType> = ({id, name, price, imgURL, className}) => {
     return (
         <div className={className}>
-            <Link href={`/api/products/${id}`}>
+            <Link href={`/products/${id}`}>
                 <div className={'flex justify-center p-6 bg-secondary rounded-lg h-[260px]'}>
                     <img className={'w-[250px] h-[250px]'} src={imgURL} alt={name}/>
                 </div>

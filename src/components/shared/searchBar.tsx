@@ -68,7 +68,7 @@ export const SearchBar = () => {
                             focused && 'visible opacity-100 top-12',
                         )}>
                         {products.map((product) => (
-                            <Link href={`/api/products/${product.id}`} key={product.id}>
+                            <Link href={`/src/app/(root)/products/${product.id}`} key={product.id}>
                                 <div onClick={onClickItem} className="px-3 py-2 hover:bg-primary/10 cursor-pointer">
                                     {product.name}
                                 </div>

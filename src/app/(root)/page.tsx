@@ -3,7 +3,7 @@ import {Title} from "@/components/shared/title";
 import {TopBar} from "@/app/topBar";
 import {Filters} from "@/components/shared/filters";
 import ProductsListGroup from "@/components/shared/products-list-group";
-import {prisma} from "../../prisma/prisma-client";
+import {prisma} from "../../../prisma/prisma-client";
 
 export default async function Home() {
 

@@ -1,3 +1,7 @@
+export {} from './modals'
+
+
+
 export {SearchBar} from './searchBar';
 export {Header} from './header';
 export {Container} from './container';
@@ -6,3 +10,4 @@ export {CheckboxFilterGroup} from './checkbox-filter-group';
 export {FilterCheckbox} from './filter-checkbox';
 export {Title} from './title';
 export {ProductImage} from './product-image';
+export {GroupVariants} from './group-variants';
