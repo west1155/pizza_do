@@ -9,5 +9,6 @@ export {Categories} from './categories';
 export {CheckboxFilterGroup} from './checkbox-filter-group';
 export {FilterCheckbox} from './filter-checkbox';
 export {Title} from './title';
-export {ProductImage} from './product-image';
+export {ProductImage} from './pizza-image';
 export {GroupVariants} from './group-variants';
+export {ChoosePizzaForm} from './choose-product-form'

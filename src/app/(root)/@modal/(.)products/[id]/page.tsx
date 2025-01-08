@@ -1,16 +1,33 @@
+import { ChooseProductModal } from '@/components/shared/modals/choose-product-modal';
 
-import {notFound} from "next/navigation";
-import {prisma} from "../../../../../../prisma/prisma-client";
-import {ChooseProductModal} from "@/components/shared/modals";
+import { notFound } from 'next/navigation';
+import { prisma } from '../../../../../../prisma/prisma-client';
 
-const ProductModalPage = async ({params}: { params: { id: number } }) => {
-    const {id} = await params;
-    const product = await prisma.product.findFirst({where: {id: Number(id)}});
+export default async function PhotoModal({ params: { id } }: { params: { id: string } }) {
+    const product = await prisma.product.findFirst({
+        where: {
+            id: Number(id),
+        },
+        include: {
+            ingredients: true,
+            items: {
+                orderBy: {
+                    createdAt: 'desc',
+                },
+                include: {
+                    product: {
+                        include: {
+                            items: true,
+                        },
+                    },
+                },
+            },
+        },
+    });
 
     if (!product) {
-        notFound()
+        return notFound();
     }
-    return <ChooseProductModal product={product}/>
-}
 
-export default ProductModalPage;
+    return <ChooseProductModal product={product} />;
+}
