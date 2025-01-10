@@ -17,8 +17,7 @@ export const ChooseProductForm = ({
                                     imageUrl,
                                     name,
                                     }: ProsType)=>  {
-
-    const textDetails = '30cm, traditional pastry 30'
+    const textDetails = 'item describtion'
     return (
         <div className={cn(className, 'flex flex-1')}>
             <div className="flex items-center justify-center flex-1 relative w-full">
