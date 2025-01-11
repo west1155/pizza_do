@@ -14,3 +14,4 @@ export {GroupVariants} from './group-variants';
 export {ChooseProductForm} from './choose-product-form'
 export {ChoosePizzaForm} from './choose-pizza-form'
 export {Ingredient} from './ingredient';
+export {CartButton} from './cartButton';
