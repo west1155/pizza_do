@@ -7,7 +7,7 @@ import * as CartItemDetails from './cart-item-details';
 import { cn } from '../../lib/utils';
 
 interface Props extends CartItemProps {
-    onClickRemove: () => void;
+    //onClickRemove: () => void;
     //onClickCountButton: CountButtonProps['onClick'];
 }
 
@@ -17,7 +17,7 @@ export const CartItem: React.FC<Props> = ({
                                               imageUrl,
                                               quantity,
                                               className,
-                                              onClickRemove,
+
                                           }) => {
     return (
         <div className={cn('flex items-center justify-between', className)}>
@@ -30,7 +30,7 @@ export const CartItem: React.FC<Props> = ({
 
             <div className="flex items-center gap-5 ml-20">
                 <CartItemDetails.CountButton onClick={() => {}} value={quantity} />
-                <button onClick={onClickRemove}>
+                <button onClick={() => {}}>
                     <X className="text-gray-400 cursor-pointer hover:text-gray-600" size={20} />
                 </button>
             </div>

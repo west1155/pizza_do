@@ -1,8 +1,9 @@
 import React from "react";
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetClose } from "../ui/sheet";
 import { Button } from "../ui";
-import { ArrowLeft, ArrowRight, Link } from "lucide-react";
+import { ArrowLeft, ArrowRight} from "lucide-react";
 import { Title } from "./title";
+import {CartItem} from "./cartItem";
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
     return (
@@ -21,6 +22,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                         <p className="text-center text-neutral-500 mb-5">
                            Add at least one product to complete the order
                         </p>
+                        <CartItem imageUrl={'https://s4d-mth-prd-01-cil-lt-images-cdne.azureedge.net/Products/Original/31-214.png'} name={'sad'} price={23} quantity={1} />
 
                         <SheetClose>
                             <Button className="w-56 h-12 text-base" size="lg">

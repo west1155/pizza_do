@@ -1,4 +1,5 @@
-import { cn } from '@/lib/utils';
+import React from 'react';
+import {cn} from "../../../lib/utils";
 
 interface Props {
   value: number;
@@ -6,5 +7,5 @@ interface Props {
 }
 
 export const CartItemDetailsPrice: React.FC<Props> = ({ value, className }) => {
-  return <h2 className={cn('font-bold', className)}>{value} ₽</h2>;
-};
+  return <h2 className={cn('font-bold', className)}>{value} £</h2>;
+}
