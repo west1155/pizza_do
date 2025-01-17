@@ -2,8 +2,11 @@ import { ChooseProductModal } from '@/components/shared/modals/choose-product-mo
 import { notFound } from 'next/navigation';
 import { prisma } from '../../../../../../prisma/prisma-client';
 
-// Ensure params is destructured properly, matching the inferred types
-export default async function PhotoModal({ params }: { params: { id: string } }) {
+type PageProps = {
+    params: { id: string }
+}
+
+export default async function PhotoModal({ params }: PageProps) {
     const numericId = Number(params.id);
     if (isNaN(numericId)) {
         return notFound();
