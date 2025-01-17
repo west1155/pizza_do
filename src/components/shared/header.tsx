@@ -1,7 +1,7 @@
 import React from "react";
 import {cn} from "../../lib/utils";
 import Image from "next/image";
-import {ArrowRight, ShoppingCart, User} from "lucide-react";
+import {User} from "lucide-react";
 import {Container} from "./container";
 import {Button} from "../ui";
 import {SearchBar} from "./searchBar";

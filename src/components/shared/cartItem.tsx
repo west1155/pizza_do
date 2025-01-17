@@ -5,13 +5,14 @@ import { X } from 'lucide-react';
 import { CartItemProps } from './cart-item-details/cart-item-details.types';
 import * as CartItemDetails from './cart-item-details';
 import { cn } from '../../lib/utils';
+import {CountButtonProps} from "./countButton";
 
-interface Props extends CartItemProps {
-    //onClickRemove: () => void;
-    //onClickCountButton: CountButtonProps['onClick'];
+interface PropsType extends CartItemProps {
+    onClickRemove?: () => void;
+    onClickCountButton?: CountButtonProps['onClick'];
 }
 
-export const CartItem: React.FC<Props> = ({
+export const CartItem: React.FC<PropsType> = ({
                                               name,
                                               price,
                                               imageUrl,
