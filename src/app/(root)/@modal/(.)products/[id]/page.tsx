@@ -1,36 +1,23 @@
 import { ChooseProductModal } from '@/components/shared/modals/choose-product-modal';
-
-
-
-
-
-
 import { notFound } from 'next/navigation';
 import { prisma } from '../../../../../../prisma/prisma-client';
 
+// Ensure params is destructured properly, matching the inferred types
+export default async function PhotoModal({ params }: { params: { id: string } }) {
+    const numericId = Number(params.id);
+    if (isNaN(numericId)) {
+        return notFound();
+    }
 
-type PageProps = {
-    params: { id: string }
-}
-
-export default async function PhotoModal( {params}: PageProps ) {
-
-    const { id } = params;
     const product = await prisma.product.findFirst({
-        where: {
-            id: Number(id),
-        },
+        where: { id: numericId },
         include: {
             ingredients: true,
             items: {
-                orderBy: {
-                    createdAt: 'desc',
-                },
+                orderBy: { createdAt: 'desc' },
                 include: {
                     product: {
-                        include: {
-                            items: true,
-                        },
+                        include: { items: true },
                     },
                 },
             },
