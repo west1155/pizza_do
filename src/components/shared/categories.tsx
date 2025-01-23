@@ -10,8 +10,6 @@ type PropsType = {
     className?: string;
 }
 
-//const arr = ['all', 'meat', 'vegan', 'gluten-free', 'spicy', 'sweet', 'sour', 'bitter', 'salty', 'umami', 'savory', 'tangy'];
-
 export const Categories: React.FC<PropsType> = ({className, items}) => {
     const categotyActiveId = useActiveId((state) => state.activeId);
     return <div className={cn('inline-flex gap-1 bg-gray-50 p-1 rounded-l-sm', className)}>

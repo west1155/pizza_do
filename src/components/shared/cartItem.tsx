@@ -24,7 +24,7 @@ export const CartItem: React.FC<PropsType> = ({
         <div className={cn('flex items-center justify-between', className)}>
             <div className="flex items-center gap-5 flex-1">
                 <CartItemDetails.Image src={imageUrl} />
-                <CartItemDetails.Info name={name} />
+              {/*  <CartItemDetails.Name  name={name} />*/}
             </div>
 
             <CartItemDetails.Price value={price} />

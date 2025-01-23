@@ -1,35 +1,22 @@
-import { ChoosePizzaForm } from '@/components/shared/choose-pizza-form';
-import { Container } from '@/components/shared/container';
-
+import { ChooseProductModal } from '@/components/shared/modals/choose-product-modal';
 import { notFound } from 'next/navigation';
 import { prisma } from '../../../../../prisma/prisma-client';
-import React from "react";
 
-export default async function ProductPage( { params: { id } }: { params: { id: string } }  ) {
+export default async function PhotoModal({ params }: { params: { id: string } }) {
+    const numericId = Number(params.id);
+    if (isNaN(numericId)) {
+        return notFound();
+    }
+
     const product = await prisma.product.findFirst({
-        where: {
-            id: Number(id),
-        },
+        where: { id: numericId },
         include: {
             ingredients: true,
-            category: {
-                include: {
-                    products: {
-                        include: {
-                            items: true,
-                        },
-                    },
-                },
-            },
             items: {
-                orderBy: {
-                    createdAt: 'desc',
-                },
+                orderBy: { createdAt: 'desc' },
                 include: {
                     product: {
-                        include: {
-                            items: true,
-                        },
+                        include: { items: true },
                     },
                 },
             },
@@ -40,14 +27,5 @@ export default async function ProductPage( { params: { id } }: { params: { id: s
         return notFound();
     }
 
-    return (
-        <Container className="flex flex-col my-10">
-            <ChoosePizzaForm
-                imageUrl={product.imageUrl}
-                name={product.name}
-                items={product.items}
-                ingredients={product.ingredients}
-            />
-        </Container>
-    );
+    return <ChooseProductModal product={product} />;
 }

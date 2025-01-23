@@ -1,5 +1,4 @@
 import { ICartItem } from '@/store/cart';
-import React from 'react';
 
 interface Props {
   name: string;
@@ -17,7 +16,7 @@ export const CartItemInfo: React.FC<Props> = ({ name, pizzaSize, type, ingredien
   }
 
   if (ingredients) {
-    details.push(...ingredients.map((ingredient) => ingredient.name));
+    details.push(...ingredients.map((ingredient: any) => ingredient.name));
   }
 
   return (
