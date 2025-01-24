@@ -3,7 +3,7 @@
   "builds": [
     {
       "src": "next.config.ts",
-      "use": "./next"
+      "use": "@vercel/next"
     }
   ]
 }
