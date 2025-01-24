@@ -1,4 +1,6 @@
-import { ICartItem } from '@/store/cart';
+import React from "react";
+import {ICartItem} from "../../../store/cart";
+
 
 interface Props {
   name: string;

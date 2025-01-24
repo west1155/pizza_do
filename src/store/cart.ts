@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { getCartDetails } from '@/lib/get-cart-details';
-import { Api } from '@/services/api-client';
+import { apiClient } from '@/services/api-client';
 import { CreateCartItemValues } from '@/services/dto/cart';
 
 export type ICartItem = {
@@ -33,7 +33,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   removeCartItem: async (id: number) => {
     try {
       set({ loading: true, error: false });
-      const data = await Api.cart.removeCartItem(id);
+      const data = await apiClient.cart.removeCartItem(id);
       set(getCartDetails(data));
     } catch (error) {
       set({ error: true });
@@ -45,7 +45,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   fetchCartItems: async () => {
     try {
       set({ loading: true, error: false });
-      const data = await Api.cart.fetchCart();
+      const data = await apiClient.cart.fetchCart();
       set(getCartDetails(data));
     } catch (error) {
       console.error(error);
@@ -57,7 +57,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   updateItemQuantity: async (id: number, quantity: number) => {
     try {
       set({ loading: true, error: false });
-      const data = await Api.cart.updateItemQuantity(id, quantity);
+      const data = await apiClient.cart.updateItemQuantity(id, quantity);
       set(getCartDetails(data));
     } catch (error) {
       console.error(error);
@@ -69,7 +69,7 @@ export const useCartStore = create<CartState>((set, get) => ({
   addCartItem: async (values: CreateCartItemValues) => {
     try {
       set({ loading: true, error: false });
-      const data = await Api.cart.addCartItem(values);
+      const data = await apiClient.cart.addCartItem(values);
       set(getCartDetails(data));
     } catch (error) {
       console.error(error);
