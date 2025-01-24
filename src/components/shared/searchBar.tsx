@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useClickAway, useDebounce } from 'react-use';
 import { cn } from '../../lib/utils';
-import { apiClient } from '../../../services/api-client';
+import {apiClient} from "../../services/api-client";
 
 export const SearchBar = () => {
     const [focused, setFocused] = React.useState(false);

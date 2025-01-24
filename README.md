@@ -56,7 +56,7 @@ This project is built with the following technologies:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/pizza-project.git
+   git clone https://github.com/west1155/pizza-project.git
    cd pizza-project
    ```
 
@@ -90,28 +90,6 @@ This project is built with the following technologies:
 - **Real-time Notifications**: Toasts and email updates.
 - **Modern UI/UX**: Built with TailwindCSS and ShadCN for a sleek interface.
 
----
-
-## 🧑‍💻 Contribution
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a new branch:
-   ```bash
-   git checkout -b feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add some feature"
-   ```
-4. Push the branch:
-   ```bash
-   git push origin feature-name
-   ```
-5. Create a pull request.
-
----
 
 ## 📜 License
 

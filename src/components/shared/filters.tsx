@@ -10,8 +10,8 @@ import { useMap, useSet } from 'react-use';
 import {debounce} from "next/dist/server/utils";
 import { Ingredient } from '@prisma/client';
 import {CheckboxFilterGroup} from "./checkbox-filter-group";
-import {apiClient} from "../../../services/api-client";
 import { Input } from '../ui';
+import {apiClient} from "../../services/api-client";
 
 interface Props {
     className?: string;
