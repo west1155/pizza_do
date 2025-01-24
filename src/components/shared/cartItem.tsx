@@ -6,6 +6,7 @@ import { CartItemProps } from './cart-item-details/cart-item-details.types';
 import * as CartItemDetails from './cart-item-details';
 import { cn } from '../../lib/utils';
 import {CountButtonProps} from "./countButton";
+import {CartItemInfo} from "./cart-item-details/cart-item-info";
 
 interface PropsType extends CartItemProps {
     onClickRemove?: () => void;
@@ -24,7 +25,7 @@ export const CartItem: React.FC<PropsType> = ({
         <div className={cn('flex items-center justify-between', className)}>
             <div className="flex items-center gap-5 flex-1">
                 <CartItemDetails.Image src={imageUrl} />
-              {/*  <CartItemDetails.Name  name={name} />*/}
+                <CartItemInfo  name={name} />
             </div>
 
             <CartItemDetails.Price value={price} />

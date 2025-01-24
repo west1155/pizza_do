@@ -47,7 +47,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
         if (availableSize && !isAvailableSIze) {
             setSize(Number(availableSize.value) as PizzaSize);
         }
-    }, [availablePizzaSizes, type]);
+    }, [availablePizzaSizes, size, type]);
 
     const totalIngridientsPrice = ingredients
         .filter((ingredient) => selectedIngredientsIds.has(ingredient.id))

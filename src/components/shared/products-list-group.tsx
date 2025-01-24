@@ -8,7 +8,6 @@ import { useIntersection } from 'react-use';
 import {useActiveId} from "../../store";
 
 
-
 type PropsType = {
     className?: string;
     title: string;
@@ -28,7 +27,7 @@ const ProductsListGroup: React.FC<PropsType> = ({className, title, products, lis
         if (intersection?.isIntersecting) {
             setActiveId(categoryId);
         }
-    }, [intersection?.isIntersecting]);
+    }, [intersection?.isIntersecting, categoryId, setActiveId]);
 
     return (
         <div className={className} ref={intersectionRef}>

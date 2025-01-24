@@ -1,8 +1,8 @@
 'use client';
 import { Ingredient } from "@prisma/client";
 import React from "react";
-import { apiClient } from "../../../services/api-client";
 import { useSet } from "react-use";
+import {apiClient} from "@/services/api-client";
 
 type ReturnProps = {
     ingredients: Pick<Ingredient, "id" | "name">[];

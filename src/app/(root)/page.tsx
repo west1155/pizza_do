@@ -4,9 +4,14 @@ import {TopBar} from "@/app/topBar";
 import {Filters} from "@/components/shared/filters";
 import ProductsListGroup from "@/components/shared/products-list-group";
 import {prisma} from "../../../prisma/prisma-client";
+import {Suspense} from "react";
 
 export default async function Home() {
 
+    // Loading state for Filters
+    function FiltersLoading() {
+        return <div className="w-[250px] animate-pulse bg-muted rounded-lg h-[600px]" />
+    }
 
     const categories = await prisma.category.findMany(
         {
@@ -33,7 +38,9 @@ export default async function Home() {
             <Container className={'pb-14 px-12'}>
                 <div className={'flex gap-[80px]'}>
                     <div className={'w-[250px]'}>
+                        <Suspense fallback={<FiltersLoading />}>
                         <Filters/>
+                        </Suspense>
                     </div>
                     <div className={'flex-1'}>
                         <div className={'flex flex-col gap-16'}>

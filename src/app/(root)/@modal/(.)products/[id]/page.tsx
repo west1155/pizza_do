@@ -1,11 +1,16 @@
-import { ChooseProductModal } from '@/components/shared/modals/choose-product-modal';
-import { notFound } from 'next/navigation';
-import { prisma } from '../../../../../../prisma/prisma-client';
+import { notFound } from "next/navigation"
+import { ChooseProductModal } from "@/components/shared/modals/choose-product-modal"
+import {prisma} from "../../../../../../prisma/prisma-client";
 
-export default async function PhotoModal({ params }: { params: { id: string } }) {
-    const numericId = Number(params.id);
+export default async function PhotoModal({
+                                             params,
+                                         }: {
+    params: Promise<{ id: string }>
+}) {
+    const { id } = await params
+    const numericId = Number(id)
     if (isNaN(numericId)) {
-        return notFound();
+        return notFound()
     }
 
     const product = await prisma.product.findFirst({
@@ -13,7 +18,7 @@ export default async function PhotoModal({ params }: { params: { id: string } })
         include: {
             ingredients: true,
             items: {
-                orderBy: { createdAt: 'desc' },
+                orderBy: { createdAt: "desc" },
                 include: {
                     product: {
                         include: { items: true },
@@ -21,11 +26,12 @@ export default async function PhotoModal({ params }: { params: { id: string } })
                 },
             },
         },
-    });
+    })
 
     if (!product) {
-        return notFound();
+        return notFound()
     }
 
-    return <ChooseProductModal product={product} />;
+    return <ChooseProductModal product={product} />
 }
+

@@ -45,7 +45,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
                     { scroll: false },
                 );
             }, 300),
-        [],
+        [router],
     );
 
     React.useEffect(() => {
@@ -55,7 +55,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
             sizes: Array.from(sizes),
             pizzaTypes: Array.from(pizzaTypes),
         });
-    }, [filters, selectedIngredientsIds, pizzaTypes, sizes]);
+    }, [filters, selectedIngredientsIds, pizzaTypes, sizes, updateQueryParams]);
 
     const defaultIngredients = ingredients
         ?.slice(0, 6)
@@ -117,9 +117,10 @@ export const Filters: React.FC<Props> = ({ className }) => {
                     max={150}
                     step={1}
                     value={[Number(filters.priceFrom) || 0, Number(filters.priceTo) || 1000]}
-                    onValueChange={([priceFrom, priceTo]: [number, number]) => {
-                        set('priceFrom', String(priceFrom || 0));
-                        set('priceTo', String(priceTo || 0));
+                    onValueChange={(values: number[]) => {
+                        const [priceFrom, priceTo] = values
+                        set("priceFrom", String(priceFrom || 0))
+                        set("priceTo", String(priceTo || 0))
                     }}
                 />
             </div>
