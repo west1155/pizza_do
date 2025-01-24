@@ -1,0 +1,1 @@
+self.__INTERCEPTION_ROUTE_REWRITE_MANIFEST='[{"source":"/products/:id","destination":"/(.)products/:id","has":[{"type":"header","key":"Next-Url","value":"(?:\\\\/(.*))?[\\\\/#\\\\?]?"}]}]';
