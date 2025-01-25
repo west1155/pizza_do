@@ -6,8 +6,8 @@
   "/production/[id]/page": "app/production/[id]/page.js",
   "/api/ingridients/route": "app/api/ingridients/route.js",
   "/(root)/@modal/(.)products/[id]/page": "app/(root)/@modal/(.)products/[id]/page.js",
+  "/(root)/@modal/[...catchAll]/page": "app/(root)/@modal/[...catchAll]/page.js",
   "/(root)/products/[id]/page": "app/(root)/products/[id]/page.js",
   "/(root)/page": "app/(root)/page.js",
-  "/(root)/@modal/[...catchAll]/page": "app/(root)/@modal/[...catchAll]/page.js",
   "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js"
 }
