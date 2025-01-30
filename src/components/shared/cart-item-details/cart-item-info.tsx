@@ -13,8 +13,8 @@ export const CartItemInfo: React.FC<Props> = ({ name, pizzaSize, type, ingredien
   const details = [];
 
   if (pizzaSize) {
-    const typeName = type === 1 ? 'Традиционное' : 'Тонкое';
-    details.push(`${typeName} ${pizzaSize} см`);
+    const typeName = type === 1 ? 'Traditional ' : 'Thin';
+    details.push(`${typeName} ${pizzaSize} cm`);
   }
 
   if (ingredients) {

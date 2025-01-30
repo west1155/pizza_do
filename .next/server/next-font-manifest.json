@@ -1,1 +1,13 @@
-{"pages":{},"app":{"/Users/alleimberg/Study/pizza_do/src/app/layout":["static/media/8a9e72331fecd08b-s.p.woff2"],"/Users/alleimberg/Study/pizza_do/src/app/(dashboard)/layout":["static/media/21ed5661b47f7f6d-s.p.woff2"]},"appUsingSizeAdjust":true,"pagesUsingSizeAdjust":false}
+{
+  "app": {
+    "[project]/src/app/(root)/page": [
+      "static/media/XRXV3I6Li01BKofIMeaBTMnFcQIG-s.p.afe9d560.woff2"
+    ],
+    "[project]/src/app/(root)/@modal/[...catchAll]/page": [
+      "static/media/XRXV3I6Li01BKofIMeaBTMnFcQIG-s.p.afe9d560.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

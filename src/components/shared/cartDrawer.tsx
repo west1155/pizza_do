@@ -1,11 +1,18 @@
-import React from "react";
+'use client'
+
+import React, {useState} from "react";
 import { Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetClose } from "../ui/sheet";
-import { Button } from "../ui";
+import {Alert, Button} from "../ui";
 import { ArrowLeft, ArrowRight} from "lucide-react";
 import { Title } from "./title";
 import {CartItem} from "./cartItem";
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
+    const [isAlertOpen, setIsAlertOpen] = useState(false);
+
+    const showAlert = () => {
+        setIsAlertOpen(true);
+    };
     return (
         <Sheet>
             <SheetTrigger asChild>{children}</SheetTrigger>
@@ -22,7 +29,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                         <p className="text-center text-neutral-500 mb-5">
                            Add at least one product to complete the order
                         </p>
-                        <CartItem imageUrl={'https://s4d-mth-prd-01-cil-lt-images-cdne.azureedge.net/Products/Original/31-214.png'} name={'sad'} price={23} quantity={1} />
+                        <CartItem showAlert={showAlert} imageUrl={'https://s4d-mth-prd-01-cil-lt-images-cdne.azureedge.net/Products/Original/31-214.png'} name={'sad'} price={23} quantity={1} />
 
                         <SheetClose>
                             <Button className="w-56 h-12 text-base" size="lg">
@@ -43,12 +50,21 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({ children }) => {
                         </div>
                             <Button
                                 type="submit"
-                                className="w-full h-12 text-base">
+                                className="w-full h-12 text-base"
+                                onClick={showAlert}
+                            >
                                 Complete order
                                 <ArrowRight className="w-5 ml-2" />
                             </Button>
                     </div>
                 </SheetFooter>
+                <Alert
+                    open={isAlertOpen}
+                    onOpenChange={setIsAlertOpen}
+                    title="Under Construction"
+                    description="This feature is currently under development"
+                    duration={5000} // Auto-dismiss after 5 seconds
+                />
             </SheetContent>
         </Sheet>
     );

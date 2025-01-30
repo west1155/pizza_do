@@ -11,6 +11,7 @@ import {CartItemInfo} from "./cart-item-details/cart-item-info";
 interface PropsType extends CartItemProps {
     onClickRemove?: () => void;
     onClickCountButton?: CountButtonProps['onClick'];
+    showAlert?: () => void;
 }
 
 export const CartItem: React.FC<PropsType> = ({
@@ -19,6 +20,7 @@ export const CartItem: React.FC<PropsType> = ({
                                               imageUrl,
                                               quantity,
                                               className,
+                                              showAlert
 
                                           }) => {
     return (
@@ -32,7 +34,7 @@ export const CartItem: React.FC<PropsType> = ({
 
             <div className="flex items-center gap-5 ml-20">
                 <CartItemDetails.CountButton onClick={() => {}} value={quantity} />
-                <button onClick={() => {}}>
+                <button onClick={showAlert}>
                     <X className="text-gray-400 cursor-pointer hover:text-gray-600" size={20} />
                 </button>
             </div>
