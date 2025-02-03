@@ -902,6 +902,10 @@ body {
   margin-top: auto;
 }
 
+.mb-2 {
+  margin-bottom: .5rem;
+}
+
 .block {
   display: block;
 }
@@ -966,6 +970,10 @@ body {
   height: 2.25rem;
 }
 
+.h-\[100px\] {
+  height: 100px;
+}
+
 .h-\[250px\] {
   height: 250px;
 }
@@ -1016,10 +1024,6 @@ body {
 
 .h-\[600px\] {
   height: 600px;
-}
-
-.h-\[60px\] {
-  height: 60px;
 }
 
 .h-\[var\(--radix-select-trigger-height\)\] {
@@ -1132,10 +1136,6 @@ body {
 
 .w-\[500px\] {
   width: 500px;
-}
-
-.w-\[60px\] {
-  width: 60px;
 }
 
 .w-full {

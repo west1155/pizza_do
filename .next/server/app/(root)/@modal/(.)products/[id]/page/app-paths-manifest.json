@@ -1,0 +1,3 @@
+{
+  "/(root)/@modal/(.)products/[id]/page": "app/(root)/@modal/(.)products/[id]/page.js"
+}
