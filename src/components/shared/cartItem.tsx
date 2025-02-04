@@ -8,7 +8,7 @@ import {cn} from '../../lib/utils';
 import {CartItemInfo} from "./cart-item-details/cart-item-info";
 
 interface PropsType extends CartItemProps {
-    id: string;
+    id: number;
     className?: string;
     onClickCountButton?: (type: 'plus' | 'minus') => void;
 }

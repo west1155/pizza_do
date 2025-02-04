@@ -15,10 +15,10 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
     const totalAmount = useCartStore((state) => state.totalAmount);
     const fetchCartItems = useCartStore((state) => state.fetchCartItems);
     const items = useCartStore((state) => state.items);
-
     React.useEffect(() => {
         fetchCartItems();
     }, [fetchCartItems]);
+
 
     return (
         <Sheet>
@@ -37,19 +37,11 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
                         </p>
                         <div className={'-mx-6 mt-5 overflow-auto scrollbar flex-1'}>
                             <div className={'mb-2'}>
-                                {items.map((item) => (
-                                    <div key={item.id} className="mb-2">
-                                        <CartItem
-                                           key={item.id}
-                                            name={item.name}
-                                            imageUrl={item.imageUrl}
-                                            price={item.price}
-                                            quantity={item.quantity}
-                                            pizzaSize={item.pizzaSize}
-                                            type={item.type}
-                                        />
-                                    </div>
-                                ))}
+                                {items.map((item) => {
+                                    return <CartItem key={item.id} id={item.id} price={item.price} name={item.name}
+                                                     imageUrl={item.imageUrl} quantity={item.quantity}
+                                                     onClickCountButton={() => alert('hi')}/>
+                                })}
                             </div>
                         </div>
                         <SheetClose>

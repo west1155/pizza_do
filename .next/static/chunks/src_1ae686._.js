@@ -1001,9 +1001,7 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 var { r: __turbopack_require__, f: __turbopack_module_context__, i: __turbopack_import__, s: __turbopack_esm__, v: __turbopack_export_value__, n: __turbopack_export_namespace__, c: __turbopack_cache__, M: __turbopack_modules__, l: __turbopack_load__, j: __turbopack_dynamic__, P: __turbopack_resolve_absolute_path__, U: __turbopack_relative_url__, R: __turbopack_resolve_module_id_path__, b: __turbopack_worker_blob_url__, g: global, __dirname, k: __turbopack_refresh__, m: module, z: require } = __turbopack_context__;
 {
 __turbopack_esm__({
-    "addCartItem": (()=>addCartItem),
     "fetchCart": (()=>fetchCart),
-    "removeCartItem": (()=>removeCartItem),
     "updateItemQuantity": (()=>updateItemQuantity)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$instance$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/services/instance.ts [app-client] (ecmascript)");
@@ -1012,18 +1010,10 @@ const fetchCart = async ()=>{
     const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$instance$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].get('/cart');
     return data;
 };
-const addCartItem = async (values)=>{
-    const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$instance$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].post('/cart', values);
-    return data;
-};
 const updateItemQuantity = async (id, quantity)=>{
     const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$instance$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].patch('/cart/' + id, {
         quantity
     });
-    return data;
-};
-const removeCartItem = async (id)=>{
-    const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$instance$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["axiosInstance"].delete('/cart/' + id);
     return data;
 };
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
@@ -1727,25 +1717,6 @@ const useCartStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
         error: false,
         loading: true,
         totalAmount: 0,
-        removeCartItem: async (id)=>{
-            try {
-                set({
-                    loading: true,
-                    error: false
-                });
-                const data = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2d$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiClient"].cart.removeCartItem(id);
-                set((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$get$2d$cart$2d$details$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCartDetails"])(data));
-            } catch (error) {
-                set({
-                    error: true
-                });
-                console.error(error);
-            } finally{
-                set({
-                    loading: false
-                });
-            }
-        },
         fetchCartItems: async ()=>{
             try {
                 set({
@@ -1772,25 +1743,6 @@ const useCartStore = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_mo
                     error: false
                 });
                 const data = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2d$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiClient"].cart.updateItemQuantity(id, quantity);
-                set((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$get$2d$cart$2d$details$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCartDetails"])(data));
-            } catch (error) {
-                console.error(error);
-                set({
-                    error: true
-                });
-            } finally{
-                set({
-                    loading: false
-                });
-            }
-        },
-        addCartItem: async (values)=>{
-            try {
-                set({
-                    loading: true,
-                    error: false
-                });
-                const data = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$services$2f$api$2d$client$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["apiClient"].cart.addCartItem(values);
                 set((0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$get$2d$cart$2d$details$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["getCartDetails"])(data));
             } catch (error) {
                 console.error(error);
@@ -2212,11 +2164,12 @@ __turbopack_esm__({
     "CartDrawer": (()=>CartDrawer)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/ui/sheet.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$index$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$module__evaluation$3e$__ = __turbopack_import__("[project]/src/components/ui/index.ts [app-client] (ecmascript) <module evaluation>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$title$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/shared/title.tsx [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/store/cart.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$cartItem$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/shared/cartItem.tsx [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/hooks/use-cart.ts [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/ui/button.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$left$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowLeft$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/arrow-left.js [app-client] (ecmascript) <export default as ArrowLeft>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$arrow$2d$right$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ArrowRight$3e$__ = __turbopack_import__("[project]/node_modules/lucide-react/dist/esm/icons/arrow-right.js [app-client] (ecmascript) <export default as ArrowRight>");
@@ -2229,12 +2182,17 @@ var _s = __turbopack_refresh__.signature();
 ;
 ;
 ;
+;
 const CartDrawer = ({ children })=>{
     _s();
-    const { totalAmount, items, loading } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"])(true);
-    const onClickCountButton = (id, quantity, type)=>{
-        console.log(id, quantity, type);
-    };
+    const totalAmount = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCartStore"])((state)=>state.totalAmount);
+    const fetchCartItems = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCartStore"])((state)=>state.fetchCartItems);
+    const items = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCartStore"])((state)=>state.items);
+    __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].useEffect(()=>{
+        fetchCartItems();
+    }, [
+        fetchCartItems
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Sheet"], {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetTrigger"], {
@@ -2242,7 +2200,7 @@ const CartDrawer = ({ children })=>{
                 children: children
             }, void 0, false, {
                 fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                lineNumber: 24,
+                lineNumber: 25,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetContent"], {
@@ -2258,17 +2216,17 @@ const CartDrawer = ({ children })=>{
                                         children: "Order list"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                        lineNumber: 29,
+                                        lineNumber: 30,
                                         columnNumber: 29
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                    lineNumber: 28,
+                                    lineNumber: 29,
                                     columnNumber: 25
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                lineNumber: 27,
+                                lineNumber: 28,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -2280,7 +2238,7 @@ const CartDrawer = ({ children })=>{
                                         className: "text-center font-bold my-2"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                        lineNumber: 33,
+                                        lineNumber: 34,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -2288,31 +2246,35 @@ const CartDrawer = ({ children })=>{
                                         children: "Add at least one product to complete the order"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                        lineNumber: 34,
+                                        lineNumber: 35,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                         className: '-mx-6 mt-5 overflow-auto scrollbar flex-1',
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: 'mb-2',
-                                            children: items.map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$cartItem$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartItem"], {
-                                                    name: item.name,
+                                            children: items.map((item)=>{
+                                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$cartItem$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["CartItem"], {
+                                                    id: item.id,
                                                     price: item.price,
+                                                    name: item.name,
                                                     imageUrl: item.imageUrl,
-                                                    onClickCountButton: onClickCountButton
+                                                    quantity: item.quantity,
+                                                    onClickCountButton: ()=>alert('hi')
                                                 }, item.id, false, {
                                                     fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                                    lineNumber: 40,
-                                                    columnNumber: 37
-                                                }, this))
+                                                    lineNumber: 41,
+                                                    columnNumber: 44
+                                                }, this);
+                                            })
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                            lineNumber: 38,
+                                            lineNumber: 39,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                        lineNumber: 37,
+                                        lineNumber: 38,
                                         columnNumber: 25
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetClose"], {
@@ -2324,31 +2286,31 @@ const CartDrawer = ({ children })=>{
                                                     className: "w-5 mr-2"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                                    lineNumber: 52,
+                                                    lineNumber: 49,
                                                     columnNumber: 33
                                                 }, this),
                                                 "Go back"
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                            lineNumber: 51,
+                                            lineNumber: 48,
                                             columnNumber: 29
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                        lineNumber: 50,
+                                        lineNumber: 47,
                                         columnNumber: 25
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                lineNumber: 32,
+                                lineNumber: 33,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                        lineNumber: 26,
+                        lineNumber: 27,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$sheet$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["SheetFooter"], {
@@ -2367,13 +2329,13 @@ const CartDrawer = ({ children })=>{
                                                     className: "flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                                    lineNumber: 63,
+                                                    lineNumber: 60,
                                                     columnNumber: 33
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                            lineNumber: 61,
+                                            lineNumber: 58,
                                             columnNumber: 29
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -2384,13 +2346,13 @@ const CartDrawer = ({ children })=>{
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                            lineNumber: 66,
+                                            lineNumber: 63,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                    lineNumber: 60,
+                                    lineNumber: 57,
                                     columnNumber: 25
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -2403,42 +2365,44 @@ const CartDrawer = ({ children })=>{
                                             className: "w-5 ml-2"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                            lineNumber: 74,
+                                            lineNumber: 72,
                                             columnNumber: 29
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                                    lineNumber: 68,
+                                    lineNumber: 65,
                                     columnNumber: 25
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                            lineNumber: 59,
+                            lineNumber: 56,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                        lineNumber: 58,
+                        lineNumber: 55,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/shared/cartDrawer.tsx",
-                lineNumber: 25,
+                lineNumber: 26,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/shared/cartDrawer.tsx",
-        lineNumber: 23,
+        lineNumber: 24,
         columnNumber: 9
     }, this);
 };
-_s(CartDrawer, "SrofmL+84wgfx1IprqaRo9V00UU=", false, function() {
+_s(CartDrawer, "KjJ/4ZODkuNuoe+vsxGxhavq/Do=", false, function() {
     return [
-        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$hooks$2f$use$2d$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCart"]
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCartStore"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCartStore"],
+        __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useCartStore"]
     ];
 });
 _c = CartDrawer;
