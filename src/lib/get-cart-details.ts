@@ -8,6 +8,7 @@ type ReturnProps = {
 };
 
 export const getCartDetails = (data: CartResponse): ReturnProps => {
+
   const items = data.items.map((item) => ({
     id: item.id,
     quantity: item.quantity,

@@ -1,4 +1,8 @@
 {
   "/(root)/page": "app/(root)/page.js",
-  "/(root)/@modal/[...catchAll]/page": "app/(root)/@modal/[...catchAll]/page.js"
+  "/api/cart/route": "app/api/cart/route.js",
+  "/(root)/@modal/[...catchAll]/page": "app/(root)/@modal/[...catchAll]/page.js",
+  "/favicon.ico/route": "app/favicon.ico/route.js",
+  "/api/ingridients/route": "app/api/ingridients/route.js",
+  "/api/ingredients/route": "app/api/ingredients/route.js"
 }

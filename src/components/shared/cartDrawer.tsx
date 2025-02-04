@@ -5,10 +5,21 @@ import React from "react";
 import {Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetClose} from "../ui/sheet";
 import {Button} from "../ui";
 import {ArrowLeft, ArrowRight} from "lucide-react";
-import { Title } from "./title";
+import {Title} from "./title";
+import {useCartStore} from "../../store/cart";
+import {CartItem} from "./cartItem";
 
 
 export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
+
+    const totalAmount = useCartStore((state) => state.totalAmount);
+    const fetchCartItems = useCartStore((state) => state.fetchCartItems);
+    const items = useCartStore((state) => state.items);
+
+    React.useEffect(() => {
+        fetchCartItems();
+    }, [fetchCartItems]);
+
     return (
         <Sheet>
             <SheetTrigger asChild>{children}</SheetTrigger>
@@ -26,6 +37,19 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
                         </p>
                         <div className={'-mx-6 mt-5 overflow-auto scrollbar flex-1'}>
                             <div className={'mb-2'}>
+                                {items.map((item) => (
+                                    <div key={item.id} className="mb-2">
+                                        <CartItem
+                                           key={item.id}
+                                            name={item.name}
+                                            imageUrl={item.imageUrl}
+                                            price={item.price}
+                                            quantity={item.quantity}
+                                            pizzaSize={item.pizzaSize}
+                                            type={item.type}
+                                        />
+                                    </div>
+                                ))}
                             </div>
                         </div>
                         <SheetClose>
@@ -44,12 +68,13 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
                                 <div
                                     className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2"/>
                             </span>
-                            <span className="font-bold text-lg">{'33'}£</span>
+                            <span className="font-bold text-lg">{totalAmount}£</span>
                         </div>
                         <Button
                             type="submit"
                             className="w-full h-12 text-base"
-                            onClick={() => {}}
+                            onClick={() => {
+                            }}
                         >
                             Complete order
                             <ArrowRight className="w-5 ml-2"/>
@@ -58,4 +83,5 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
                 </SheetFooter>
             </SheetContent>
         </Sheet>
-    )}
+    )
+}
