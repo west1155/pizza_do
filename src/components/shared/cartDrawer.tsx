@@ -1,5 +1,4 @@
 'use client'
-
 import React from "react";
 
 import {Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle, SheetFooter, SheetClose} from "../ui/sheet";
@@ -15,10 +14,25 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
     const totalAmount = useCartStore((state) => state.totalAmount);
     const fetchCartItems = useCartStore((state) => state.fetchCartItems);
     const items = useCartStore((state) => state.items);
+    const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
+    const removeItem = useCartStore((state) => state.removeCartItem);
+    const addItem = useCartStore((state) => state.addItem);
+
+    const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
+        const item = items.find((item) => item.id === id);
+        if (!item) return;
+
+        const newQuantity =
+            type === 'plus'
+                ? item.quantity + 1
+                : Math.max(1, item.quantity - 1);
+
+        updateItemQuantity(id, newQuantity);
+    }
+
     React.useEffect(() => {
         fetchCartItems();
-    }, [fetchCartItems]);
-
+    }, []);
 
     return (
         <Sheet>
@@ -37,11 +51,18 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
                         </p>
                         <div className={'-mx-6 mt-5 overflow-auto scrollbar flex-1'}>
                             <div className={'mb-2'}>
-                                {items.map((item) => {
-                                    return <CartItem key={item.id} id={item.id} price={item.price} name={item.name}
-                                                     imageUrl={item.imageUrl} quantity={item.quantity}
-                                                     onClickCountButton={() => alert('hi')}/>
-                                })}
+                                {items.map((item) => (
+                                    <CartItem
+                                        key={item.id}
+                                        id={item.id}
+                                        price={item.price}
+                                        name={item.name}
+                                        imageUrl={item.imageUrl}
+                                        quantity={item.quantity}
+                                        onClickCountButton={(type) => onClickCountButton(item.id, item.quantity, type)}
+                                        onClickRemoveButton={() => removeItem(item.id)}
+                                    />
+                                ))}
                             </div>
                         </div>
                         <SheetClose>
@@ -57,8 +78,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
                         <div className="flex mb-4">
                             <span className="flex flex-1 text-lg text-neutral-500">
                                 Price:
-                                <div
-                                    className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2"/>
+                                <div className="flex-1 border-b border-dashed border-b-neutral-200 relative -top-1 mx-2"/>
                             </span>
                             <span className="font-bold text-lg">{totalAmount}£</span>
                         </div>

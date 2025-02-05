@@ -1,16 +1,17 @@
-'use client';
-
 import React from 'react';
 import {X} from 'lucide-react';
 import {CartItemProps} from './cart-item-details/cart-item-details.types';
 import * as CartItemDetails from './cart-item-details';
 import {cn} from '../../lib/utils';
 import {CartItemInfo} from "./cart-item-details/cart-item-info";
+import {Button} from '../ui';
 
 interface PropsType extends CartItemProps {
     id: number;
     className?: string;
     onClickCountButton?: (type: 'plus' | 'minus') => void;
+    onClickRemoveButton?: () => void;
+    quantity: number;
 }
 
 export const CartItem: React.FC<PropsType> = ({
@@ -19,6 +20,8 @@ export const CartItem: React.FC<PropsType> = ({
                                                   imageUrl,
                                                   className,
                                                   onClickCountButton,
+                                                  onClickRemoveButton,
+                                                  quantity,
 
 
                                               }) => {
@@ -32,10 +35,11 @@ export const CartItem: React.FC<PropsType> = ({
             <CartItemDetails.Price value={price}/>
 
             <div className="flex items-center gap-5 ml-20">
-                <CartItemDetails.CountButton onClick={onClickCountButton} />
-                <button onClick={() => {}} >
-                    <X className="text-gray-400 cursor-pointer hover:text-gray-600" size={20}/>
-                </button>
+                <CartItemDetails.CountButton onClick={onClickCountButton} value={quantity}/>
+                <Button onClick={() => {
+                }}>
+                    <X onClick={onClickRemoveButton} className="text-gray-400 cursor-pointer hover:text-gray-600" size={20}/>
+                </Button>
             </div>
         </div>
     );
