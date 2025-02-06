@@ -336,8 +336,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
 ;
 ;
 ;
-const ChooseProductForm = ({ className, imageUrl, name })=>{
-    const textDetails = 'item describtion';
+const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, onClose })=>{
+    const textDetails = 'item description';
+    const handleSumbit = ()=>{
+        onClose();
+        onSubmit();
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["cn"])(className, 'flex flex-1'),
         children: [
@@ -349,12 +353,12 @@ const ChooseProductForm = ({ className, imageUrl, name })=>{
                     className: "relative  transition-all z-10 duration-300 w-[250px] h-[250px]"
                 }, void 0, false, {
                     fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                    lineNumber: 24,
+                    lineNumber: 35,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                lineNumber: 23,
+                lineNumber: 34,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -366,7 +370,7 @@ const ChooseProductForm = ({ className, imageUrl, name })=>{
                         className: "font font-extrabold mb-1"
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 31,
+                        lineNumber: 42,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -374,27 +378,32 @@ const ChooseProductForm = ({ className, imageUrl, name })=>{
                         children: textDetails
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 32,
+                        lineNumber: 43,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
+                        onClick: handleSumbit,
                         className: "h-[55px] px-10 text-base rounded-[18px] w-full mt-10",
-                        children: "Add to cart - 30£"
-                    }, void 0, false, {
+                        children: [
+                            "Add to cart: ",
+                            price,
+                            " £"
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 34,
+                        lineNumber: 45,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                lineNumber: 30,
+                lineNumber: 41,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-        lineNumber: 22,
+        lineNumber: 33,
         columnNumber: 9
     }, this);
 };

@@ -291,11 +291,11 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$use
 ;
 ;
 ;
-const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
+const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items, onSubmit, onClose })=>{
     const [size, setSize] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].useState(30);
     const [type, setType] = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"].useState(1);
     const [selectedIngredientsIds, { toggle: toggleAddIngredient }] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$use$2f$esm$2f$useSet$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__useSet$3e$__["useSet"])(new Set([]));
-    const textDetaills = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$lib$2f$pizza$2d$details$2d$to$2d$text$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["pizzaDetailsToText"])(size, type);
+    const textDetails = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$lib$2f$pizza$2d$details$2d$to$2d$text$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["pizzaDetailsToText"])(size, type);
     const availablePizzas = items?.filter((item)=>item.pizzaType === String(type)) ?? [];
     const availablePizzaSizes = __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$app$2f$lib$2f$pizza$2d$details$2d$to$2d$text$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["pizzaSizes"].map((item)=>({
             name: item.name,
@@ -313,15 +313,21 @@ const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
         size,
         type
     ]);
+    const currentPizzaId = items?.find((item)=>item.pizzaType === String(type) && item.size === String(size))?.id;
     const totalIngridientsPrice = ingredients.filter((ingredient)=>selectedIngredientsIds.has(ingredient.id)).reduce((acc, ingredient)=>acc + ingredient.price, 0);
     const pizzaPrice = items?.find((item)=>item.pizzaType === String(type) && item.size === String(size))?.price ?? 0;
     const totalPrice = pizzaPrice + totalIngridientsPrice;
-    const onHandleClick = ()=>{
+    const handleSubmit = ()=>{
+        if (currentPizzaId !== undefined) {
+            onSubmit(currentPizzaId, Array.from(selectedIngredientsIds));
+        }
         console.log({
             size,
             type,
-            selectedIngredientsIds: Array.from(selectedIngredientsIds)
+            selectedIngredientsIds: Array.from(selectedIngredientsIds),
+            currentPizzaId
         });
+        onClose();
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$utils$2e$ts__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["cn"])(className, 'flex flex-1'),
@@ -331,7 +337,7 @@ const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
                 size: size
             }, void 0, false, {
                 fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                lineNumber: 71,
+                lineNumber: 82,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -343,15 +349,15 @@ const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
                         className: "font-extrabold mb-1"
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                        lineNumber: 74,
+                        lineNumber: 85,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                         className: "text-gray-400",
-                        children: textDetaills
+                        children: textDetails
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                        lineNumber: 76,
+                        lineNumber: 87,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -363,7 +369,7 @@ const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
                                 onClick: (selectedValue)=>setSize(Number(selectedValue))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                                lineNumber: 79,
+                                lineNumber: 90,
                                 columnNumber: 21
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$group$2d$variants$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GroupVariants"], {
@@ -372,13 +378,13 @@ const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
                                 onClick: (selectedValue)=>setType(Number(selectedValue))
                             }, void 0, false, {
                                 fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                                lineNumber: 82,
+                                lineNumber: 93,
                                 columnNumber: 21
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                        lineNumber: 78,
+                        lineNumber: 89,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -395,27 +401,27 @@ const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
                                         active: selectedIngredientsIds.has(ingredient.id)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                                        lineNumber: 90,
+                                        lineNumber: 101,
                                         columnNumber: 33
                                     }, this)
                                 }, ingredient.id, false, {
                                     fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                                    lineNumber: 89,
+                                    lineNumber: 100,
                                     columnNumber: 29
                                 }, this))
                         }, void 0, false, {
                             fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                            lineNumber: 87,
+                            lineNumber: 98,
                             columnNumber: 21
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                        lineNumber: 86,
+                        lineNumber: 97,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Button"], {
                         className: "h-[55px] px-10 text-base rounded-[18px] w-full mt-10",
-                        onClick: onHandleClick,
+                        onClick: handleSubmit,
                         children: [
                             "Add to Cart ",
                             totalPrice,
@@ -423,19 +429,19 @@ const ChoosePizzaForm = ({ name, imageUrl, className, ingredients, items })=>{
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                        lineNumber: 101,
+                        lineNumber: 112,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-                lineNumber: 73,
+                lineNumber: 84,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/shared/choose-pizza-form.tsx",
-        lineNumber: 70,
+        lineNumber: 81,
         columnNumber: 9
     }, this);
 };
