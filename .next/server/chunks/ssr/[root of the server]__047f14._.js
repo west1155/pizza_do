@@ -336,7 +336,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$b
 ;
 ;
 ;
-const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, onClose })=>{
+const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, onClose, loading = false })=>{
     const textDetails = 'item description';
     const handleSumbit = ()=>{
         onClose();
@@ -353,12 +353,12 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, onClose
                     className: "relative  transition-all z-10 duration-300 w-[250px] h-[250px]"
                 }, void 0, false, {
                     fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                    lineNumber: 35,
+                    lineNumber: 37,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                lineNumber: 34,
+                lineNumber: 36,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -370,7 +370,7 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, onClose
                         className: "font font-extrabold mb-1"
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 42,
+                        lineNumber: 44,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -378,11 +378,12 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, onClose
                         children: textDetails
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 43,
+                        lineNumber: 45,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["Button"], {
                         onClick: handleSumbit,
+                        loading: loading,
                         className: "h-[55px] px-10 text-base rounded-[18px] w-full mt-10",
                         children: [
                             "Add to cart: ",
@@ -391,19 +392,19 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, onClose
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 45,
+                        lineNumber: 47,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                lineNumber: 41,
+                lineNumber: 43,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-        lineNumber: 33,
+        lineNumber: 35,
         columnNumber: 9
     }, this);
 };

@@ -5,6 +5,7 @@ import {Filters} from "@/components/shared/filters";
 import ProductsListGroup from "@/components/shared/products-list-group";
 import {prisma} from "../../../prisma/prisma-client";
 import {Suspense} from "react";
+import {Toaster} from "react-hot-toast";
 
 export default async function Home() {
 
@@ -27,6 +28,7 @@ export default async function Home() {
     )
     return (
         <>
+            <Toaster />
             <Container className={'flex flex-col mt-10 px-12'}>
                 <Title text='all pizzas' size={'lg'} className={'font-extrabold'}/>
             </Container>

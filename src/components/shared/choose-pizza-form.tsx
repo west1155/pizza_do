@@ -10,6 +10,7 @@ import {GroupVariants} from "./group-variants";
 import {pizzaDetailsToText, PizzaSize, pizzaSizes, PizzaType, pizzaTypes} from "../../app/lib/pizza-details-to-text";
 import {Ingredient} from "./ingredient";
 import {useSet} from 'react-use';
+import toast from "react-hot-toast";
 
 interface Props {
     imageUrl: string;
@@ -19,6 +20,7 @@ interface Props {
     items?: IProductItem['items'];
     onSubmit: (itemId: number, ingredients: number[]) => void;
     onClose: () => void;
+    loading?: boolean;
 }
 
 export const ChoosePizzaForm: React.FC<Props> = ({
@@ -28,7 +30,8 @@ export const ChoosePizzaForm: React.FC<Props> = ({
                                                      ingredients,
                                                      items,
                                                      onSubmit,
-                                                     onClose
+                                                     onClose,
+                                                     loading = false
                                                  }) => {
     const [size, setSize] = React.useState<PizzaSize>(30);
     const [type, setType] = React.useState<PizzaType>(1);
@@ -64,17 +67,18 @@ export const ChoosePizzaForm: React.FC<Props> = ({
     const totalPrice: number = pizzaPrice + totalIngridientsPrice;
 
 
-    const handleSubmit = () => {
-        if (currentPizzaId !== undefined) {
-            onSubmit(currentPizzaId, Array.from(selectedIngredientsIds));
+    const handleSubmit = async () => {
+        try {
+            if (currentPizzaId) {
+                onSubmit(currentPizzaId, Array.from(selectedIngredientsIds))
+                toast.success('The product has been added to the cart');
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error('There was an error adding the product to the cart');
         }
-        console.log({
-            size,
-            type,
-            selectedIngredientsIds: Array.from(selectedIngredientsIds),
-            currentPizzaId
-        });
-        onClose();
+        console.log('close');
+        onClose(); //not working // check it first
     }
 
     return (
@@ -112,6 +116,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
                 <Button
                     className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
                     onClick={handleSubmit}
+                    loading={loading}
                 >
                     Add to Cart {totalPrice} £
                 </Button>

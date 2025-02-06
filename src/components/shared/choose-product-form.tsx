@@ -2,7 +2,8 @@ import React from 'react';
 import {cn} from "../../lib/utils";
 import {Title} from './title';
 import {Button} from "../ui";
-import {addCartItem} from "../../services/cart";
+import toast from "react-hot-toast";
+import {router} from "next/client";
 
 
 type ProsType = {
@@ -10,8 +11,9 @@ type ProsType = {
     imageUrl: string;
     price: number
     name: string
-    onClose(): void
     onSubmit(): void
+    loading?: boolean
+    onClose: () => void
 }
 
 export const ChooseProductForm = ({
@@ -20,15 +22,23 @@ export const ChooseProductForm = ({
                                       name,
                                       price,
                                       onSubmit,
+                                      loading = false,
                                       onClose,
                                   }: ProsType) => {
 
     const textDetails = 'item description'
 
-    const handleSumbit = () => {
+    const handleSubmit = async () => {
+        try {
+            onSubmit()
+            toast.success('The product has been added to the cart');
+        } catch (error) {
+            console.error(error);
+            toast.error('There was an error adding the product to the cart');
+        }
+
         onClose()
-        onSubmit()
-    }
+    };
     return (
         <div className={cn(className, 'flex flex-1')}>
             <div className="flex items-center justify-center flex-1 relative w-full">
@@ -42,7 +52,10 @@ export const ChooseProductForm = ({
                 <Title text={name} size={'md'} className="font font-extrabold mb-1"/>
                 <p className="text-gray-400">{textDetails}</p>
 
-                <Button onClick={handleSumbit} className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
+                <Button
+                    onClick={handleSubmit}
+                    loading={loading}
+                    className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10">
                     Add to cart: {price} £
                 </Button>
 
