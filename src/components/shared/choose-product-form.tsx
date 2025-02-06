@@ -2,14 +2,15 @@ import React from 'react';
 import {cn} from "../../lib/utils";
 import { Title } from './title';
 import {Button} from "../ui";
+import {IProduct} from "../../app/hooks/use-choose-pizza";
 
 
 type ProsType = {
-    className?: string;
     imageUrl: string;
-    name: string
-    onClickAdd?: void
-
+    name: string;
+    className?: string;
+    items?: IProduct['items'];
+    onClickAdd?: VoidFunction;
 }
 
 export const ChooseProductForm = ({

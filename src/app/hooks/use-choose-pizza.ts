@@ -17,45 +17,44 @@ export type IProduct = Product & { items: ProductItem[]; ingredients: Ingredient
 export const useChoosePizza = (items?: IProduct['items']) => {
     const [selectedIngredientsIds, { toggle: toggleAddIngredient }] = useSet<number>(new Set([]));
     const { addCartItem, loading } = useCart();
-
     const [size, setSize] = React.useState<PizzaSize>(20);
     const [type, setType] = React.useState<PizzaType>(1);
 
-    const activeSizes = items?.filter((item) => Number(item.pizzaType) === type).map((item) => item.size);
-    const productItem = items?.find((item) => Number(item.pizzaType) === type && Number(item.size) === size)
+    const activeSizes = items?.filter((item: ProductItem) => Number(item.pizzaType) === type).map((item) => item.size);
+    const productItem = items?.find((item: ProductItem) => Number(item.pizzaType) === type && Number(item.size) === size);
 
     const isActiveSize = (value: number | string) => {
-        return activeSizes?.some((activeSize) => activeSize === value);
+        return activeSizes?.some((activeSize) => Number(activeSize) === Number(value))
     };
-
-    const availablePizzaSizes = pizzaSizes.map<PizzaSizeItem>((obj) => ({
-        name: obj.name,
-        value: obj.value,
-        disabled: !isActiveSize(obj.value),
-    }));
+    const availablePizzaSizes = React.useMemo(() => {
+        return pizzaSizes.map<PizzaSizeItem>((obj) => ({
+            name: obj.name,
+            value: obj.value,
+            disabled: !isActiveSize(obj.value),
+        }));
+    }, [items, type]);
 
     React.useEffect(() => {
         const availableSize = availablePizzaSizes?.find((item) => !item.disabled);
-
-        if (availableSize) {
+        if (availableSize && size !== Number(availableSize.value)) {
             setSize(Number(availableSize.value) as PizzaSize);
         }
-    }, [type]);
+    }, [type, availablePizzaSizes, size]);
 
     const addPizza = async () => {
         if (productItem) {
             try {
-                addCartItem({
+                await addCartItem({
                     productItemId: productItem?.id,
                     pizzaSize: size,
                     type,
                     ingredientsIds: Array.from(selectedIngredientsIds),
                     quantity: 1,
                 });
-                toast.success('The product has been added to the cart');
+                toast.success('Товар добавлен в корзину');
             } catch (error) {
                 console.error(error);
-                toast.error('There was an error adding to cart');
+                toast.error('Произошла ошибка при добавлении в корзину');
             }
         }
     };
@@ -72,14 +71,14 @@ export const useChoosePizza = (items?: IProduct['items']) => {
         return selectedIngredientsIds.has(id);
     };
 
-    const textDetaills = pizzaDetailsToText(size, type);
+    const textDetails = pizzaDetailsToText(size, type);
 
     return {
         availablePizzaSizes,
         setPizzaSize,
         setPizzaType,
         isActiveSize,
-        textDetaills,
+        textDetails,
         isSelectedIngredient,
         loading,
         size,

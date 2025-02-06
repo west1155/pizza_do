@@ -3,7 +3,18 @@ export {Checkbox} from "@/components/ui/checkbox";
 export {Input} from "@/components/ui/input";
 export {RadioGroup} from "@/components/ui/radio-group";
 export {Select} from "@/components/ui/select";
-export {Dialog} from "@/components/ui/dialog";
+export {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogFooter,
+    DialogTitle,
+    DialogDescription,
+    DialogPortal,
+    DialogOverlay,
+    DialogClose,
+    DialogTrigger,
+} from "@/components/ui/dialog";
 export {Drawer} from "@/components/ui/drawer";
 export {Popover} from "@/components/ui/popover";
 export {Skeleton} from "@/components/ui/skeleton";
