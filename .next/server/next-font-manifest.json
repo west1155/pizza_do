@@ -2,6 +2,9 @@
   "app": {
     "[project]/src/app/(root)/page": [
       "static/media/XRXV3I6Li01BKofIMeaBTMnFcQIG-s.p.afe9d560.woff2"
+    ],
+    "[project]/src/app/(root)/@modal/(.)products/[id]/page": [
+      "static/media/XRXV3I6Li01BKofIMeaBTMnFcQIG-s.p.afe9d560.woff2"
     ]
   },
   "appUsingSizeAdjust": true,

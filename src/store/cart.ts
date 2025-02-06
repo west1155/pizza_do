@@ -102,4 +102,5 @@ export const useCartStore = create<CartState>((set, get) => ({
       set({ loading: false });
     }
   },
+
 }));

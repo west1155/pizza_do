@@ -17,7 +17,7 @@ interface Props {
     className?: string;
     ingredients: IProductItem['ingredients'];
     items?: IProductItem['items'];
-    onClickAdd?: VoidFunction;
+    onClickAdd(productItemId: number, ingredients: number): void;
 }
 
 export const ChoosePizzaForm: React.FC<Props> = ({
