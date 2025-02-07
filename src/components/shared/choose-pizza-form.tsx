@@ -10,7 +10,6 @@ import {GroupVariants} from "./group-variants";
 import {pizzaDetailsToText, PizzaSize, pizzaSizes, PizzaType, pizzaTypes} from "../../app/lib/pizza-details-to-text";
 import {Ingredient} from "./ingredient";
 import {useSet} from 'react-use';
-import toast from "react-hot-toast";
 
 interface Props {
     imageUrl: string;
@@ -19,7 +18,6 @@ interface Props {
     ingredients: IProductItem['ingredients'];
     items?: IProductItem['items'];
     onSubmit: (itemId: number, ingredients: number[]) => void;
-    onClose: () => void;
     loading?: boolean;
 }
 
@@ -30,7 +28,6 @@ export const ChoosePizzaForm: React.FC<Props> = ({
                                                      ingredients,
                                                      items,
                                                      onSubmit,
-                                                     onClose,
                                                      loading = false
                                                  }) => {
     const [size, setSize] = React.useState<PizzaSize>(30);
@@ -66,19 +63,8 @@ export const ChoosePizzaForm: React.FC<Props> = ({
 
     const totalPrice: number = pizzaPrice + totalIngridientsPrice;
 
-
-    const handleSubmit = async () => {
-        try {
-            if (currentPizzaId) {
-                onSubmit(currentPizzaId, Array.from(selectedIngredientsIds))
-                toast.success('The product has been added to the cart');
-            }
-        } catch (error) {
-            console.error(error);
-            toast.error('There was an error adding the product to the cart');
-        }
-        console.log('close');
-        onClose(); //not working // check it first
+    const handleClickAdd = () => {
+        if (currentPizzaId) onSubmit(currentPizzaId, Array.from(selectedIngredientsIds));
     }
 
     return (
@@ -115,7 +101,7 @@ export const ChoosePizzaForm: React.FC<Props> = ({
                 </div>
                 <Button
                     className="h-[55px] px-10 text-base rounded-[18px] w-full mt-10"
-                    onClick={handleSubmit}
+                    onClick={handleClickAdd}
                     loading={loading}
                 >
                     Add to Cart {totalPrice} £

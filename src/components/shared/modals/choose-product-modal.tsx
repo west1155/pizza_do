@@ -8,6 +8,7 @@ import {IProductItem} from "../../../../@types/product";
 import {ChoosePizzaForm} from "../choose-pizza-form";
 import {useCartStore} from "../../../store/cart";
 import {router} from "next/client";
+import toast from "react-hot-toast";
 
 
 type PropsType = {
@@ -22,18 +23,24 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
     const loading = useCartStore(state => state.loading);
     const firstItem = product.items?.[0];
 
-    const onAddPizza = (productItemId: number, ingredients: number[]) => {
-        addCartItem({
-            productItemId,
-            ingredients
-        });
-    }
 
-    const onAddProduct = () => {
-        addCartItem({
-            productItemId : firstItem.id,
-        });
-    }
+
+    const onSubmit = async (productItemId?: number, ingredients?: number[]) => {
+        try {
+            const itemId = productItemId ?? firstItem.id;
+
+                await addCartItem({
+                    productItemId : itemId,         // Add pizza item id if pizza
+                    ingredients
+                });
+
+                toast.success(product.name + 'has been added to the cart');
+                router.back()
+        } catch (error) {
+            toast.error('There was an error adding the product to the cart');
+            console.log(error);
+        }
+    };
 
     const onClose = () =>  {
         router.back()
@@ -46,18 +53,17 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
                     isPizzaForm ?
                         <
                             ChoosePizzaForm
-                            onSubmit={onAddPizza}
+                            onSubmit={onSubmit}
                             imageUrl={product.imageUrl}
                             name={product.name}
                             ingredients={product.ingredients}
                             items={product.items}
                             loading={loading}
-                            onClose={onClose}
                         />
 
                         :
                         <ChooseProductForm
-                            onSubmit={onAddProduct}
+                            onSubmit={onSubmit}
                             price={firstItem.price}
                             imageUrl={product.imageUrl}
                             name={product.name}
