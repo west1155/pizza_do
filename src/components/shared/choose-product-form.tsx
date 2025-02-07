@@ -11,7 +11,6 @@ type ProsType = {
     name: string
     onSubmit?: () => void
     loading?: boolean
-    onClose: () => void
 }
 
 export const ChooseProductForm = ({
@@ -21,9 +20,11 @@ export const ChooseProductForm = ({
                                       price,
                                       onSubmit,
                                       loading = false,
+
                                   }: ProsType) => {
 
     const textDetails = 'item description'
+
     return (
         <div className={cn(className, 'flex flex-1')}>
             <div className="flex items-center justify-center flex-1 relative w-full">

@@ -7,8 +7,8 @@ import {ChooseProductForm} from "../choose-product-form";
 import {IProductItem} from "../../../../@types/product";
 import {ChoosePizzaForm} from "../choose-pizza-form";
 import {useCartStore} from "../../../store/cart";
-import {router} from "next/client";
 import toast from "react-hot-toast";
+import {useRouter} from "next/navigation";
 
 
 type PropsType = {
@@ -22,6 +22,7 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
     const addCartItem  = useCartStore(state => state.addCartItem);
     const loading = useCartStore(state => state.loading);
     const firstItem = product.items?.[0];
+    const router = useRouter();
 
 
 
@@ -35,7 +36,7 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
                 });
 
                 toast.success(product.name + 'has been added to the cart');
-                router.back()
+                router.back();
         } catch (error) {
             toast.error('There was an error adding the product to the cart');
             console.log(error);
@@ -68,7 +69,6 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
                             imageUrl={product.imageUrl}
                             name={product.name}
                             loading={loading}
-                            onClose={onClose}
                         />
                 }
             </DialogContent>

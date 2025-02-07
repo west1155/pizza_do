@@ -30,12 +30,12 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, loading
                     className: "relative  transition-all z-10 duration-300 w-[250px] h-[250px]"
                 }, void 0, false, {
                     fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                    lineNumber: 30,
+                    lineNumber: 31,
                     columnNumber: 17
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                lineNumber: 29,
+                lineNumber: 30,
                 columnNumber: 13
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -47,7 +47,7 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, loading
                         className: "font font-extrabold mb-1"
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 37,
+                        lineNumber: 38,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -55,7 +55,7 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, loading
                         children: textDetails
                     }, void 0, false, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 38,
+                        lineNumber: 39,
                         columnNumber: 17
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
@@ -69,19 +69,19 @@ const ChooseProductForm = ({ className, imageUrl, name, price, onSubmit, loading
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                        lineNumber: 40,
+                        lineNumber: 41,
                         columnNumber: 17
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/shared/choose-product-form.tsx",
-                lineNumber: 36,
+                lineNumber: 37,
                 columnNumber: 13
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/shared/choose-product-form.tsx",
-        lineNumber: 28,
+        lineNumber: 29,
         columnNumber: 9
     }, this);
 };
@@ -500,12 +500,10 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$d
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$choose$2d$product$2d$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/shared/choose-product-form.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$choose$2d$pizza$2d$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/shared/choose-pizza-form.tsx [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$store$2f$cart$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/store/cart.ts [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$client$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/client.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-hot-toast/dist/index.mjs [app-client] (ecmascript)");
 ;
 var _s = __turbopack_refresh__.signature();
 'use client';
-;
 ;
 ;
 ;
@@ -526,14 +524,14 @@ const ChooseProductModal = ({ product })=>{
                 ingredients
             });
             __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(product.name + 'has been added to the cart');
-            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$client$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["router"].back();
+            router.back();
         } catch (error) {
             __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].error('There was an error adding the product to the cart');
             console.log(error);
         }
     };
     const onClose = ()=>{
-        __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$client$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["router"].back();
+        router.back();
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$dialog$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"], {
         open: Boolean(product),
@@ -548,7 +546,7 @@ const ChooseProductModal = ({ product })=>{
                 loading: loading
             }, void 0, false, {
                 fileName: "[project]/src/components/shared/modals/choose-product-modal.tsx",
-                lineNumber: 54,
+                lineNumber: 53,
                 columnNumber: 25
             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$shared$2f$choose$2d$product$2d$form$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["ChooseProductForm"], {
                 onSubmit: onSubmit,
@@ -559,17 +557,17 @@ const ChooseProductModal = ({ product })=>{
                 onClose: onClose
             }, void 0, false, {
                 fileName: "[project]/src/components/shared/modals/choose-product-modal.tsx",
-                lineNumber: 65,
+                lineNumber: 64,
                 columnNumber: 25
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/shared/modals/choose-product-modal.tsx",
-            lineNumber: 51,
+            lineNumber: 50,
             columnNumber: 13
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/shared/modals/choose-product-modal.tsx",
-        lineNumber: 50,
+        lineNumber: 49,
         columnNumber: 9
     }, this);
 };
