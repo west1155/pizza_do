@@ -10,7 +10,6 @@ import {useCartStore} from "../../../store/cart";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
 
-
 type PropsType = {
     product: IProductItem
     className?: string;
@@ -42,10 +41,6 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
             console.log(error);
         }
     };
-
-    const onClose = () =>  {
-        router.back()
-    }
 
     return (
         <Dialog open={Boolean(product)} >
