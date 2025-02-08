@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "ProductItem" ALTER COLUMN "size" SET DATA TYPE TEXT,
+ALTER COLUMN "pizzaType" SET DATA TYPE TEXT;

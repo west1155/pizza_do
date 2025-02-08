@@ -8,7 +8,6 @@ import {Suspense} from "react";
 import {Toaster} from "react-hot-toast";
 
 export default async function Home() {
-    // Loading state for Filters
     function FiltersLoading() {
         return <div className="w-[250px] animate-pulse bg-muted rounded-lg h-[600px]" />
     }
@@ -25,6 +24,16 @@ export default async function Home() {
             }
         }
     )
+
+    categories.forEach(category => {
+        category.products.forEach(product => {
+            product.items.forEach(item => {
+                if (typeof item.size !== 'string') {
+                    item.size = String(item.size);
+                }
+            });
+        });
+    });
     return (
         <>
             <Toaster />

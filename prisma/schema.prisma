@@ -56,8 +56,8 @@ model ProductItem {
   id Int @id @default(autoincrement())
 
   price     Int
-  size      Int?
-  pizzaType Int?
+  size      String?
+  pizzaType String?
 
   cartItems CartItem[]
 
