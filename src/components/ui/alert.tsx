@@ -16,8 +16,8 @@ interface AlertProps {
 export const Alert: React.FC<AlertProps> = ({
                                          title,
                                          description,
-                                         duration = 5000, // Default duration: 5 seconds
-                                         open,
+// Default duration: 5 seconds
+                                                open,
                                          onOpenChange,
                                      }) => {
     return (

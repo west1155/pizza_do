@@ -4,7 +4,6 @@ import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import {VisuallyHidden} from "@radix-ui/react-visually-hidden"
 import {X} from "lucide-react"
-import { useRouter } from "next/navigation";
 
 import {cn} from "@/lib/utils"
 
@@ -35,7 +34,6 @@ const DialogContent = React.forwardRef<
     React.ElementRef<typeof DialogPrimitive.Content>,
     React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content>
 >(({className, children, ...props}, ref) => {
-    const router = useRouter();
 
     return (
         <DialogPortal>

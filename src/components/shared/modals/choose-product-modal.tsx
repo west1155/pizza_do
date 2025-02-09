@@ -29,10 +29,11 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
         try {
             const itemId = productItemId ?? firstItem.id;
 
-                await addCartItem({
-                    productItemId : itemId,         // Add pizza item id if pizza
-                    ingredients
-                });
+            await addCartItem({
+                productItemId: itemId, // Add pizza item id if pizza
+                ingredientsIds: ingredients,
+                quantity: 1
+            });
 
                 toast.success(product.name + 'has been added to the cart');
                 router.back();

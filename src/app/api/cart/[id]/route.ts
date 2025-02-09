@@ -53,9 +53,9 @@ async function updateCartTotalAmount(cartToken: string) {
     });
 }
 
-export async function PATCH(req: NextRequest, context: { params: { id: string } }) {
+export async function PATCH(req: NextRequest, context: { params: Promise<{ id: string }> }) {
     try {
-        const { params } = context;
+        const params = await context.params;
         const cartToken = req.cookies.get('cartToken')?.value;
 
         if (!cartToken) {
@@ -107,9 +107,9 @@ export async function PATCH(req: NextRequest, context: { params: { id: string } 
     }
 }
 
-export async function DELETE(req: NextRequest, context: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
     try {
-        const { params } = context;
+        const params = await context.params;
         const cartToken = req.cookies.get('cartToken')?.value;
 
         if (!cartToken) {

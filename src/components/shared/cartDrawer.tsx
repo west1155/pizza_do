@@ -31,7 +31,7 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
 
     React.useEffect(() => {
         fetchCartItems();
-    }, []);
+    }, [fetchCartItems]);
 
     return (
         <Sheet>

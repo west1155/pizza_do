@@ -7,7 +7,7 @@ import { Toaster } from "react-hot-toast";
 import { findPizzas, GetSearchParams } from "@/lib/get-pizzas";
 import {TopBar} from "@/components/shared/topBar";
 
-export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
+export default async function Home({ searchParams }: { searchParams: Promise<GetSearchParams> }) {
     const awaitedSearchParams = await searchParams;
     const { products: categoryProducts } = await findPizzas(awaitedSearchParams);
 
