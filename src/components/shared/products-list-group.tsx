@@ -16,7 +16,7 @@ type PropsType = {
     categoryId: number;
 }
 
-const ProductsListGroup: React.FC<PropsType> = ({className, title, products, listClassName, categoryId}) => {
+export const ProductsListGroup: React.FC<PropsType> = ({className, title, products, listClassName, categoryId}) => {
     const intersectionRef = React.useRef(null);
     const intersection = useIntersection(intersectionRef, {
         threshold: 0.4,
@@ -52,5 +52,3 @@ const ProductsListGroup: React.FC<PropsType> = ({className, title, products, lis
 ProductsListGroup.propTypes = {
 
 };
-
-export default ProductsListGroup;

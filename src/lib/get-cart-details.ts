@@ -7,7 +7,10 @@ type ReturnProps = {
   totalAmount: number;
 };
 
-export const getCartDetails = (data: CartResponse): ReturnProps => {
+export const getCartDetails = (data: CartResponse | null): ReturnProps => {
+  if (!data || !data.items) {
+    return { items: [], totalAmount: 0 };
+  }
 
   const items = data.items.map((item) => ({
     id: item.id,
