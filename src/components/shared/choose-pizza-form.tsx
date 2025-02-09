@@ -52,14 +52,14 @@ export const ChoosePizzaForm: React.FC<Props> = ({
         }
     }, [availablePizzaSizes, size, type]);
 
-    const currentPizzaId = items?.find((item) => item.pizzaType === String(type) && item.size === String(size))?.id;
+    const currentPizzaId = items?.find((item) => item.pizzaType === type && item.size === size)?.id;
 
     const totalIngridientsPrice = ingredients
         .filter((ingredient) => selectedIngredientsIds.has(ingredient.id))
         .reduce((acc, ingredient) => acc + ingredient.price, 0);
 
-    const pizzaPrice: number = items?.find((item) => item.pizzaType == String(type)
-        && item.size == String(size))?.price ?? 0;
+    const pizzaPrice: number = items?.find((item) => item.pizzaType == type
+        && item.size == size)?.price ?? 0;
 
     const totalPrice: number = pizzaPrice + totalIngridientsPrice;
 

@@ -1,9 +1,7 @@
 {
-  "/(root)/products/[id]/page": "app/(root)/products/[id]/page.js",
-  "/api/cart/route": "app/api/cart/route.js",
   "/(root)/page": "app/(root)/page.js",
   "/api/ingredients/route": "app/api/ingredients/route.js",
-  "/favicon.ico/route": "app/favicon.ico/route.js",
-  "/(root)/@modal/[...catchAll]/page": "app/(root)/@modal/[...catchAll]/page.js",
-  "/(root)/@modal/(.)products/[id]/page": "app/(root)/@modal/(.)products/[id]/page.js"
+  "/api/cart/route": "app/api/cart/route.js",
+  "/(root)/@modal/(.)products/[id]/page": "app/(root)/@modal/(.)products/[id]/page.js",
+  "/api/cart/[id]/route": "app/api/cart/[id]/route.js"
 }
