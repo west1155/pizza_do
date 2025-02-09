@@ -1,3 +1,4 @@
+'use client'
 import React from "react";
 import {cn} from "../../lib/utils";
 import {Button} from "../ui";
@@ -5,13 +6,15 @@ import {ArrowRight, ShoppingCart} from "lucide-react";
 import {CartDrawer} from "./cartDrawer";
 
 type PropsType = {
+    totalAmount? : number
     className?: string;
 }
-export const CartButton: React.FC<PropsType> = ({className}) => {
+export const CartButton: React.FC<PropsType> = ({className, totalAmount}) => {
+    // const [totalAmount, loading] = useCartStore((state) => [state.totalAmount, state.loading])
     return (
         <CartDrawer>
             <Button className={cn('relative group', className)}>
-                <b>7.50£</b>
+                <b>{totalAmount}</b>
                 <span className="h-full w-[1px] bg-white/30 mx-3"/>
                 <div className="flex items-center gap-1 transition duration-300 group-hover:opacity-0">
                     <ShoppingCart className="h-4 w-4 relative" strokeWidth={2}/>

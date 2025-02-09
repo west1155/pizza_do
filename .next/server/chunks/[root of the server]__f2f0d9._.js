@@ -86,22 +86,19 @@ __turbopack_esm__({
     "PATCH": (()=>PATCH)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/server.js [app-route] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/prisma/prisma-client.ts [app-route] (ecmascript)");
+(()=>{
+    const e = new Error("Cannot find module 'prisma-client'");
+    e.code = 'MODULE_NOT_FOUND';
+    throw e;
+})();
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$calc$2d$cart$2d$item$2d$total$2d$amount$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/lib/calc-cart-item-total-amount.ts [app-route] (ecmascript)");
 ;
 ;
 ;
-async function updateCartTotalAmount(userId, cartToken) {
-    const userCart = await __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cart.findFirst({
+async function updateCartTotalAmount(cartToken) {
+    const userCart = await prisma.cart.findFirst({
         where: {
-            OR: [
-                {
-                    userId
-                },
-                {
-                    tokenId: cartToken
-                }
-            ]
+            tokenId: cartToken
         },
         include: {
             items: {
@@ -121,8 +118,8 @@ async function updateCartTotalAmount(userId, cartToken) {
     });
     const totalAmount = userCart?.items.reduce((acc, item)=>{
         return acc + (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$calc$2d$cart$2d$item$2d$total$2d$amount$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["calcCartItemTotalAmount"])(item);
-    }, 0);
-    return __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cart.update({
+    }, 0) ?? 0;
+    return await prisma.cart.update({
         where: {
             id: userCart?.id
         },
@@ -146,58 +143,16 @@ async function updateCartTotalAmount(userId, cartToken) {
         }
     });
 }
-async function PATCH(req, { params }) {
-    const data = await req.json();
-    const token = req.cookies.get('cartToken')?.value;
-    if (!token) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: 'Cart token not found'
-        });
-    }
-    const cartItem = await __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cartItem.findFirst({
-        where: {
-            id: Number(params.id)
-        }
-    });
-    if (!cartItem) {
-        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
-            error: 'Cart item not found'
-        });
-    }
-    await __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cartItem.update({
-        where: {
-            id: cartItem.id
-        },
-        data: {
-            quantity: data.quantity
-        }
-    });
-    await updateCartTotalAmount(Number(params.id), token);
-    const updatedCartItems = await __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cartItem.findMany({
-        where: {
-            cartId: cartItem.id
-        },
-        include: {
-            productItem: {
-                include: {
-                    product: true
-                }
-            },
-            ingredients: true
-        }
-    });
-    return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(updatedCartItems);
-}
-async function DELETE(req, { params }) {
+async function PATCH(req, context) {
     try {
+        const { params } = context;
         const cartToken = req.cookies.get('cartToken')?.value;
-        const userId = Number(params?.id);
         if (!cartToken) {
             return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
                 error: 'Cart token not found'
             });
         }
-        const cartItem = await __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cartItem.findFirst({
+        const cartItem = await prisma.cartItem.findFirst({
             where: {
                 id: Number(params.id)
             }
@@ -207,22 +162,74 @@ async function DELETE(req, { params }) {
                 error: 'Cart item not found'
             });
         }
-        await __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cartItem.delete({
+        const data = await req.json();
+        await prisma.cartItem.update({
+            where: {
+                id: cartItem.id
+            },
+            data: {
+                quantity: data.quantity
+            }
+        });
+        await updateCartTotalAmount(cartToken);
+        const userCart = await prisma.cart.findFirst({
+            where: {
+                tokenId: cartToken
+            },
+            include: {
+                items: {
+                    orderBy: {
+                        createdAt: 'desc'
+                    },
+                    include: {
+                        productItem: {
+                            include: {
+                                product: true
+                            }
+                        },
+                        ingredients: true
+                    }
+                }
+            }
+        });
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json(userCart);
+    } catch (err) {
+        console.log(err);
+        return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+            message: '[CART_PATCH] Server error'
+        }, {
+            status: 500
+        });
+    }
+}
+async function DELETE(req, context) {
+    try {
+        const { params } = context;
+        const cartToken = req.cookies.get('cartToken')?.value;
+        if (!cartToken) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: 'Cart token not found'
+            });
+        }
+        const cartItem = await prisma.cartItem.findFirst({
+            where: {
+                id: Number(params.id)
+            }
+        });
+        if (!cartItem) {
+            return __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$server$2e$js__$5b$app$2d$route$5d$__$28$ecmascript$29$__["NextResponse"].json({
+                error: 'Cart item not found'
+            });
+        }
+        await prisma.cartItem.delete({
             where: {
                 id: cartItem.id
             }
         });
-        await updateCartTotalAmount(userId, cartToken);
-        const userCart = await __TURBOPACK__imported__module__$5b$project$5d2f$prisma$2f$prisma$2d$client$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].cart.findFirst({
+        await updateCartTotalAmount(cartToken);
+        const userCart = await prisma.cart.findFirst({
             where: {
-                OR: [
-                    {
-                        userId
-                    },
-                    {
-                        tokenId: cartToken
-                    }
-                ]
+                tokenId: cartToken
             },
             include: {
                 items: {

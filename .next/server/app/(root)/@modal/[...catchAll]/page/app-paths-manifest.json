@@ -1,3 +1,0 @@
-{
-  "/(root)/@modal/[...catchAll]/page": "app/(root)/@modal/[...catchAll]/page.js"
-}

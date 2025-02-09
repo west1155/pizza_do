@@ -1021,7 +1021,7 @@ const Filters = ({ className })=>{
                                 type: "number",
                                 placeholder: "0",
                                 min: 0,
-                                max: 150,
+                                max: 100,
                                 onChange: (e)=>set('priceFrom', e.target.value),
                                 value: String(filters.priceFrom || 0)
                             }, void 0, false, {
@@ -1032,7 +1032,7 @@ const Filters = ({ className })=>{
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$input$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Input"], {
                                 type: "number",
                                 min: 1,
-                                max: 150,
+                                max: 100,
                                 placeholder: "150",
                                 onChange: (e)=>set('priceTo', e.target.value),
                                 value: String(filters.priceTo || 150)
@@ -1053,7 +1053,7 @@ const Filters = ({ className })=>{
                         step: 1,
                         value: [
                             Number(filters.priceFrom) || 0,
-                            Number(filters.priceTo) || 1000
+                            Number(filters.priceTo) || 100
                         ],
                         onValueChange: (values)=>{
                             const [priceFrom, priceTo] = values;

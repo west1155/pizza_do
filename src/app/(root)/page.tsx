@@ -1,17 +1,15 @@
 import { Container } from "@/components/shared";
 import { Title } from "@/components/shared/title";
-import { TopBar } from "@/app/topBar";
 import { Filters } from "@/components/shared/filters";
 import { ProductsListGroup } from "@/components/shared/products-list-group";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { findPizzas, GetSearchParams } from "@/lib/get-pizzas";
-import { Pagination } from "@/components/shared/pagination";
+import {TopBar} from "@/components/shared/topBar";
 
 export default async function Home({ searchParams }: { searchParams: GetSearchParams }) {
     const awaitedSearchParams = await searchParams;
-    const { products: categoryProducts, totalCount, totalPages, currentPage } = await findPizzas(awaitedSearchParams);
-    const meta = { totalCount, totalPages, currentPage };
+    const { products: categoryProducts } = await findPizzas(awaitedSearchParams);
 
     function FiltersLoading() {
         return <div className="w-[250px] animate-pulse bg-muted rounded-lg h-[600px]" />;
@@ -45,10 +43,6 @@ export default async function Home({ searchParams }: { searchParams: GetSearchPa
                                         />
                                     ),
                             )}
-                        </div>
-                        <div className="flex items-center gap-6 mt-12">
-                            <Pagination pageCount={meta.totalPages} currentPage={meta.currentPage} />
-                            <span className="text-sm text-gray-400">5 from {meta.totalCount}</span>
                         </div>
                     </div>
                 </div>

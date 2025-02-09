@@ -16,7 +16,6 @@ export const CartDrawer: React.FC<React.PropsWithChildren> = ({children}) => {
     const items = useCartStore((state) => state.items);
     const updateItemQuantity = useCartStore((state) => state.updateItemQuantity);
     const removeItem = useCartStore((state) => state.removeCartItem);
-    const addItem = useCartStore((state) => state.addItem);
 
     const onClickCountButton = (id: number, quantity: number, type: 'plus' | 'minus') => {
         const item = items.find((item) => item.id === id);

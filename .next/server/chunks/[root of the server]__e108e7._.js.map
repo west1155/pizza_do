@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 55, "column": 0}, "map": {"version":3,"sources":["turbopack://[project]/prisma/prisma-client.ts"],"sourcesContent":["import { PrismaClient } from '@prisma/client'\n\nconst prismaClientSingleton = () => {\n    return new PrismaClient()\n}\n\ndeclare const globalThis: {\n    prismaGlobal: ReturnType<typeof prismaClientSingleton>;\n} & typeof global;\n\nexport const prisma = globalThis.prismaGlobal ?? prismaClientSingleton()\n\nif (process.env.NODE_ENV !== 'production') globalThis.prismaGlobal = prisma"],"names":[],"mappings":";;;AAAA;;AAEA,MAAM,wBAAwB;IAC1B,OAAO,IAAI,2GAAA,CAAA,eAAY;AAC3B;AAMO,MAAM,SAAS,WAAW,YAAY,IAAI;AAEjD,wCAA2C,WAAW,YAAY,GAAG"}},
-    {"offset": {"line": 65, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
-}

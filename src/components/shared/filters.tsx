@@ -99,14 +99,14 @@ export const Filters: React.FC<Props> = ({ className }) => {
                         type="number"
                         placeholder="0"
                         min={0}
-                        max={150}
+                        max={100}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => set('priceFrom', e.target.value)}
                         value={String(filters.priceFrom || 0)}
                     />
                     <Input
                         type="number"
                         min={1}
-                        max={150}
+                        max={100}
                         placeholder="150"
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => set('priceTo', e.target.value)}
                         value={String(filters.priceTo || 150)}
@@ -116,7 +116,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
                     min={0}
                     max={150}
                     step={1}
-                    value={[Number(filters.priceFrom) || 0, Number(filters.priceTo) || 1000]}
+                    value={[Number(filters.priceFrom) || 0, Number(filters.priceTo) || 100]}
                     onValueChange={(values: number[]) => {
                         const [priceFrom, priceTo] = values
                         set("priceFrom", String(priceFrom || 0))

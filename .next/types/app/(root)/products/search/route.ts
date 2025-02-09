@@ -1,4 +1,4 @@
-// File: /Users/alleimberg/Study/pizza_do/src/app/(root)/products/search/route.ts
+// File: C:\Users\westdev\Study\pizza_do\src\app\(root)\products\search\route.ts
 import * as entry from '../../../../../../src/app/(root)/products/search/route.js'
 import type { NextRequest } from 'next/server.js'
 
