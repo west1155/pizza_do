@@ -12,7 +12,7 @@ type PropsType = {
     imgURL: string
     className?: string;
 }
-export const ProductCard: React.FC<PropsType> = ({id, name, price, imgURL, className}) => {
+export const ProductCard: React.FC<PropsType> = ({id, name,  price, imgURL, className}) => {
     return (
         <div className={className}>
             <Link href={`/products/${id}`}>
@@ -20,9 +20,9 @@ export const ProductCard: React.FC<PropsType> = ({id, name, price, imgURL, class
                     <img className={'w-[250px] h-[250px]'} src={imgURL} alt={name}/>
                 </div>
                 <Title text={name} size={'sm'} className={'mb-1 mt-3 font-bold'}/>
-                <p className={'text-sm text-gray-400'}>
-                    chicken, beef, pork, fish, vegetables
-                </p>
+                {/*<p className={'text-sm text-gray-400'}>*/}
+                {/*    // ingriedients if picca*/}
+                {/*</p>*/}
                 <div className={'flex justify-between items-center mt-4'}>
                     <span className={'text-[20px]'}>
                         from <b>{price} £ </b>
