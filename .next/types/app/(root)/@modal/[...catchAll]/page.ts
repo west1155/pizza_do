@@ -1,4 +1,4 @@
-// File: C:\Users\westdev\Study\pizza_do\src\app\(root)\@modal\[...catchAll]\page.tsx
+// File: /Users/alleimberg/Study/pizza_do/src/app/(root)/@modal/[...catchAll]/page.tsx
 import * as entry from '../../../../../../src/app/(root)/@modal/[...catchAll]/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

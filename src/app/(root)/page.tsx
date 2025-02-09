@@ -6,14 +6,12 @@ import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import { TopBar } from "@/components/shared/topBar";
 import { Product } from "@prisma/client";
-import { getPizzas, GETSearchParams } from "@/app/lib/get-pizzas";
+import { getPizzas, GETSearchParams } from "../lib/get-pizzas";
 
 export default async function Home({
                                        searchParams,
                                    }: {
-    // We expect searchParams to match GETSearchParams,
-    // but it might be lazy, so we await it later.
-    searchParams: GETSearchParams;
+    searchParams: Promise<GETSearchParams>;
 }) {
     function FiltersLoading() {
         return (
@@ -21,12 +19,10 @@ export default async function Home({
         );
     }
 
-    // Await searchParams in case it’s lazy (if it's already plain, this will be a no-op)
-    const resolvedSearchParams = await Promise.resolve(searchParams);
-
-    // Since resolvedSearchParams is already a plain object,
-    // there's no need to call .entries() on it.
-    const categories = await getPizzas(resolvedSearchParams);
+    // Await the searchParams
+    const params = await searchParams;
+    // Use the resolved params to get pizzas
+    const categories = await getPizzas(params);
 
     return (
         <>

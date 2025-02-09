@@ -1,6 +1,6 @@
 // src/app/api/products/search/route.ts
 import { NextResponse } from 'next/server';
-import { GetSearchParams } from '@/lib/get-pizzas';
+import { GETSearchParams } from '../../../lib/get-pizzas';
 import { prisma } from '../../../../../prisma/prisma-client';
 
 
@@ -13,7 +13,7 @@ const getSearchParams = <T>(url: string) => {
 };
 
 export async function GET(req: Request) {
-  const params = getSearchParams<GetSearchParams>(req.url);
+  const params = getSearchParams<GETSearchParams>(req.url);
 
   const products = await prisma.product.findMany({
     where: {
