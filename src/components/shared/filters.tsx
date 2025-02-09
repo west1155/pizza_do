@@ -55,7 +55,7 @@ export const Filters: React.FC<Props> = ({ className }) => {
             sizes: Array.from(sizes),
             pizzaTypes: Array.from(pizzaTypes),
         });
-    }, [filters, selectedIngredientsIds, pizzaTypes, sizes, updateQueryParams]);
+    }, [filters, selectedIngredientsIds, pizzaTypes, sizes]);
 
     const defaultIngredients = ingredients
         ?.slice(0, 6)

@@ -43,8 +43,15 @@ export const ChooseProductModal: React.FC<PropsType> = ({product}) => {
         }
     };
 
+    // Handle the modal close
+    const handleOpenChange = (open: boolean) => {
+        if (!open) {
+            router.back();
+        }
+    };
+
     return (
-        <Dialog open={Boolean(product)} >
+        <Dialog open={Boolean(product)}  onOpenChange={handleOpenChange}>
             <DialogContent className="p-0 w-[1060px] max-w-[1060px] min-h-[500px] bg-white overflow-hidden">
                 {
                     isPizzaForm ?
